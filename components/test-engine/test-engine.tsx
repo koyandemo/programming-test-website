@@ -8,16 +8,16 @@ import { MultipleChoiceQuestion } from "@/components/question-types/multiple-cho
 import { CodingQuestion } from "@/components/question-types/coding-question"
 import { TrueFalseQuestion } from "@/components/question-types/true-false-question"
 import { Clock, ChevronLeft, ChevronRight, Flag, AlertTriangle } from "lucide-react"
-import type { TestSession, TestAnswer } from "@/app/test/page"
 import { getRandomQuestions } from "@/lib/sample-questions"
+import { TestAnswerT, TestSessionT } from "@/types/test.type"
 
 interface TestEngineProps {
-  session: TestSession
-  onComplete: (session: TestSession) => void
+  session: TestSessionT
+  onComplete: (session: TestSessionT) => void
 }
 
 export function TestEngine({ session, onComplete }: TestEngineProps) {
-  const [currentSession, setCurrentSession] = useState<TestSession>(session)
+  const [currentSession, setCurrentSession] = useState<TestSessionT>(session)
   const [timeRemaining, setTimeRemaining] = useState(session.config.duration * 60)
   const [questions] = useState(() =>
     getRandomQuestions(session.config.questionCount, session.config.categories, session.config.difficulty),
@@ -59,7 +59,7 @@ export function TestEngine({ session, onComplete }: TestEngineProps) {
     const questionStartTime = currentSession.startTime + currentSession.currentQuestionIndex * 60000 // Rough estimate
     const timeSpent = Math.floor((currentTime - questionStartTime) / 1000)
 
-    const newAnswer: TestAnswer = {
+    const newAnswer: TestAnswerT = {
       questionId,
       answer,
       isCorrect,

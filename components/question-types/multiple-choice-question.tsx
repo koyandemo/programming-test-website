@@ -7,18 +7,10 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, XCircle, Clock } from "lucide-react"
+import { MultipleChoiceQuestionT } from "@/types/question.type"
 
 interface MultipleChoiceQuestionProps {
-  question: {
-    id: string
-    title: string
-    description: string
-    options: string[]
-    correctAnswer: number
-    difficulty: "Easy" | "Medium" | "Hard"
-    category: string
-    timeLimit?: number
-  }
+  question: MultipleChoiceQuestionT
   onAnswer: (questionId: string, selectedAnswer: number, isCorrect: boolean) => void
   showResult?: boolean
   selectedAnswer?: number

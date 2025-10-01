@@ -1,75 +1,58 @@
-export interface Question {
-  id: string
-  type: "multiple-choice" | "coding" | "true-false"
-  title: string
-  description?: string
-  statement?: string
-  options?: string[]
-  correctAnswer?: number | boolean
-  explanation?: string
-  examples?: Array<{
-    input: string
-    output: string
-    explanation?: string
-  }>
-  constraints?: string[]
-  difficulty: "Easy" | "Medium" | "Hard"
-  category: string
-  timeLimit?: number
-  starterCode?: Record<string, string>
-}
+import { QuestionT } from "@/types/question.type";
+import { TestDifficultyEnum, TestQuestionTypeEnum } from "@/types/test.type";
 
-export const sampleQuestions: Question[] = [
+export const sampleQuestions: QuestionT[] = [
   // JavaScript Questions
   {
     id: "js1",
-    type: "multiple-choice",
+    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
     title: "JavaScript Array Methods",
     description:
       "Which array method creates a new array with all elements that pass a test implemented by the provided function?",
     options: ["map()", "filter()", "reduce()", "forEach()"],
     correctAnswer: 1,
-    difficulty: "Easy",
+    difficulty: TestDifficultyEnum.EASY,
     category: "JavaScript",
   },
   {
     id: "js2",
-    type: "true-false",
+    type: TestQuestionTypeEnum.TRUE_FALSE,
     title: "JavaScript Hoisting",
     statement:
       "In JavaScript, variable declarations using 'let' and 'const' are hoisted to the top of their scope and can be accessed before declaration.",
     correctAnswer: false,
     explanation:
       "While 'let' and 'const' declarations are hoisted, they are not initialized and cannot be accessed before their declaration due to the Temporal Dead Zone.",
-    difficulty: "Medium",
+    difficulty: TestDifficultyEnum.MEDIUM,
     category: "JavaScript",
   },
   {
     id: "js3",
-    type: "multiple-choice",
+    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
     title: "JavaScript Closures",
     description:
       "What will be the output of the following code?\n\nfor (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 100);\n}",
     options: ["0 1 2", "3 3 3", "undefined undefined undefined", "Error"],
     correctAnswer: 1,
-    difficulty: "Medium",
+    difficulty: TestDifficultyEnum.MEDIUM,
     category: "JavaScript",
   },
   {
     id: "js4",
-    type: "true-false",
+    type: TestQuestionTypeEnum.TRUE_FALSE,
     title: "JavaScript Equality",
     statement: "In JavaScript, the expression '0' == false evaluates to true.",
     correctAnswer: true,
-    explanation: "Due to type coercion, '0' is converted to 0 (number) and false is converted to 0, so 0 == 0 is true.",
-    difficulty: "Easy",
+    explanation:
+      "Due to type coercion, '0' is converted to 0 (number) and false is converted to 0, so 0 == 0 is true.",
+    difficulty: TestDifficultyEnum.EASY,
     category: "JavaScript",
   },
 
   // Python Questions
   {
     id: "py1",
-    type: "multiple-choice",
+    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
     title: "Python List Comprehension",
     description:
       "What is the equivalent list comprehension for the following code?\n\nresult = []\nfor x in range(10):\n    if x % 2 == 0:\n        result.append(x**2)",
@@ -80,25 +63,26 @@ export const sampleQuestions: Question[] = [
       "[x**2 if x % 2 == 0 for x in range(10)]",
     ],
     correctAnswer: 1,
-    difficulty: "Easy",
+    difficulty: TestDifficultyEnum.EASY,
     category: "Python",
   },
   {
     id: "py2",
-    type: "true-false",
+    type: TestQuestionTypeEnum.TRUE_FALSE,
     title: "Python Mutability",
-    statement: "In Python, tuples are mutable, meaning you can change their elements after creation.",
+    statement:
+      "In Python, tuples are mutable, meaning you can change their elements after creation.",
     correctAnswer: false,
     explanation:
       "Tuples are immutable in Python. Once created, you cannot change, add, or remove elements from a tuple.",
-    difficulty: "Easy",
+    difficulty: TestDifficultyEnum.EASY,
     category: "Python",
   },
 
   // Data Structures & Algorithms
   {
     id: "dsa1",
-    type: "coding",
+    type: TestQuestionTypeEnum.CODING,
     title: "Two Sum Problem",
     description:
       "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.",
@@ -119,7 +103,7 @@ export const sampleQuestions: Question[] = [
       "-10^9 <= target <= 10^9",
       "Only one valid answer exists.",
     ],
-    difficulty: "Easy",
+    difficulty: TestDifficultyEnum.EASY,
     category: "Algorithms",
     starterCode: {
       javascript: `function twoSum(nums, target) {
@@ -138,19 +122,21 @@ export const sampleQuestions: Question[] = [
   },
   {
     id: "dsa2",
-    type: "multiple-choice",
+    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
     title: "Big O Notation",
-    description: "What is the time complexity of searching for an element in a balanced binary search tree?",
+    description:
+      "What is the time complexity of searching for an element in a balanced binary search tree?",
     options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
     correctAnswer: 1,
-    difficulty: "Medium",
+    difficulty: TestDifficultyEnum.MEDIUM,
     category: "Data Structures",
   },
   {
     id: "dsa3",
-    type: "coding",
+    type: TestQuestionTypeEnum.CODING,
     title: "Reverse Linked List",
-    description: "Given the head of a singly linked list, reverse the list, and return the reversed list.",
+    description:
+      "Given the head of a singly linked list, reverse the list, and return the reversed list.",
     examples: [
       {
         input: "head = [1,2,3,4,5]",
@@ -161,8 +147,11 @@ export const sampleQuestions: Question[] = [
         output: "[2,1]",
       },
     ],
-    constraints: ["The number of nodes in the list is the range [0, 5000].", "-5000 <= Node.val <= 5000"],
-    difficulty: "Easy",
+    constraints: [
+      "The number of nodes in the list is the range [0, 5000].",
+      "-5000 <= Node.val <= 5000",
+    ],
+    difficulty: TestDifficultyEnum.EASY,
     category: "Data Structures",
     starterCode: {
       javascript: `function reverseList(head) {
@@ -181,113 +170,125 @@ export const sampleQuestions: Question[] = [
   },
   {
     id: "dsa4",
-    type: "true-false",
+    type: TestQuestionTypeEnum.TRUE_FALSE,
     title: "Stack vs Queue",
     statement:
       "A stack follows the FIFO (First In, First Out) principle, while a queue follows the LIFO (Last In, First Out) principle.",
     correctAnswer: false,
     explanation:
       "This is backwards. A stack follows LIFO (Last In, First Out) and a queue follows FIFO (First In, First Out).",
-    difficulty: "Easy",
+    difficulty: TestDifficultyEnum.EASY,
     category: "Data Structures",
   },
 
   // System Design
   {
     id: "sd1",
-    type: "multiple-choice",
+    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
     title: "Database Scaling",
-    description: "Which approach is typically used to handle read-heavy workloads in database systems?",
-    options: ["Vertical scaling only", "Read replicas", "Write sharding", "Connection pooling"],
+    description:
+      "Which approach is typically used to handle read-heavy workloads in database systems?",
+    options: [
+      "Vertical scaling only",
+      "Read replicas",
+      "Write sharding",
+      "Connection pooling",
+    ],
     correctAnswer: 1,
-    difficulty: "Medium",
+    difficulty: TestDifficultyEnum.MEDIUM,
     category: "System Design",
   },
   {
     id: "sd2",
-    type: "true-false",
+    type: TestQuestionTypeEnum.TRUE_FALSE,
     title: "Microservices Architecture",
     statement:
       "In a microservices architecture, all services should share the same database to ensure data consistency.",
     correctAnswer: false,
     explanation:
       "Microservices should have their own databases to maintain independence and avoid tight coupling between services.",
-    difficulty: "Medium",
+    difficulty: TestDifficultyEnum.MEDIUM,
     category: "System Design",
   },
 
   // Database Questions
   {
     id: "db1",
-    type: "true-false",
+    type: TestQuestionTypeEnum.TRUE_FALSE,
     title: "Database Normalization",
-    statement: "Third Normal Form (3NF) eliminates all transitive dependencies in a database table.",
+    statement:
+      "Third Normal Form (3NF) eliminates all transitive dependencies in a database table.",
     correctAnswer: true,
     explanation:
       "3NF requires that all non-key attributes are fully functionally dependent on the primary key and eliminates transitive dependencies.",
-    difficulty: "Medium",
+    difficulty: TestDifficultyEnum.MEDIUM,
     category: "Database",
   },
   {
     id: "db2",
-    type: "multiple-choice",
+    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
     title: "SQL Joins",
-    description: "Which SQL JOIN returns all records from both tables, filling in NULL values where there's no match?",
+    description:
+      "Which SQL JOIN returns all records from both tables, filling in NULL values where there's no match?",
     options: ["INNER JOIN", "LEFT JOIN", "RIGHT JOIN", "FULL OUTER JOIN"],
     correctAnswer: 3,
-    difficulty: "Easy",
+    difficulty: TestDifficultyEnum.EASY,
     category: "Database",
   },
 
   // Web Development
   {
     id: "web1",
-    type: "multiple-choice",
+    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
     title: "HTTP Status Codes",
     description: "What does the HTTP status code 404 indicate?",
     options: ["Server Error", "Unauthorized", "Not Found", "Bad Request"],
     correctAnswer: 2,
-    difficulty: "Easy",
+    difficulty: TestDifficultyEnum.EASY,
     category: "Web Development",
   },
   {
     id: "web2",
-    type: "true-false",
+    type: TestQuestionTypeEnum.TRUE_FALSE,
     title: "REST API Design",
-    statement: "In RESTful API design, the HTTP method POST should be used for retrieving data from the server.",
+    statement:
+      "In RESTful API design, the HTTP method POST should be used for retrieving data from the server.",
     correctAnswer: false,
-    explanation: "GET method should be used for retrieving data. POST is typically used for creating new resources.",
-    difficulty: "Easy",
+    explanation:
+      "GET method should be used for retrieving data. POST is typically used for creating new resources.",
+    difficulty: TestDifficultyEnum.EASY,
     category: "Web Development",
   },
 
   // React Questions
   {
     id: "react1",
-    type: "multiple-choice",
+    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
     title: "React Hooks",
-    description: "Which React Hook is used to perform side effects in functional components?",
+    description:
+      "Which React Hook is used to perform side effects in functional components?",
     options: ["useState", "useEffect", "useContext", "useReducer"],
     correctAnswer: 1,
-    difficulty: "Easy",
+    difficulty: TestDifficultyEnum.EASY,
     category: "React",
   },
   {
     id: "react2",
-    type: "true-false",
+    type: TestQuestionTypeEnum.TRUE_FALSE,
     title: "React State",
-    statement: "In React, you should directly mutate the state object to update component state.",
+    statement:
+      "In React, you should directly mutate the state object to update component state.",
     correctAnswer: false,
     explanation:
       "State should never be mutated directly. Always use setState or the state setter function from useState to update state.",
-    difficulty: "Easy",
+    difficulty: TestDifficultyEnum.EASY,
     category: "React",
   },
 
   // Advanced Coding Problems
   {
     id: "adv1",
-    type: "coding",
+    type: TestQuestionTypeEnum.CODING,
     title: "Valid Parentheses",
     description:
       "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of brackets and in the correct order.",
@@ -305,8 +306,11 @@ export const sampleQuestions: Question[] = [
         output: "false",
       },
     ],
-    constraints: ["1 <= s.length <= 10^4", "s consists of parentheses only '()[]{}'."],
-    difficulty: "Easy",
+    constraints: [
+      "1 <= s.length <= 10^4",
+      "s consists of parentheses only '()[]{}'.",
+    ],
+    difficulty: TestDifficultyEnum.EASY,
     category: "Algorithms",
     starterCode: {
       javascript: `function isValid(s) {
@@ -325,7 +329,7 @@ export const sampleQuestions: Question[] = [
   },
   {
     id: "adv2",
-    type: "coding",
+    type: TestQuestionTypeEnum.CODING,
     title: "Binary Tree Maximum Depth",
     description:
       "Given the root of a binary tree, return its maximum depth. A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.",
@@ -339,8 +343,11 @@ export const sampleQuestions: Question[] = [
         output: "2",
       },
     ],
-    constraints: ["The number of nodes in the tree is in the range [0, 10^4].", "-100 <= Node.val <= 100"],
-    difficulty: "Easy",
+    constraints: [
+      "The number of nodes in the tree is in the range [0, 10^4].",
+      "-100 <= Node.val <= 100",
+    ],
+    difficulty: TestDifficultyEnum.EASY,
     category: "Data Structures",
     starterCode: {
       javascript: `function maxDepth(root) {
@@ -361,7 +368,7 @@ export const sampleQuestions: Question[] = [
   // More challenging questions
   {
     id: "hard1",
-    type: "multiple-choice",
+    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
     title: "Concurrency Concepts",
     description: "In concurrent programming, what is a race condition?",
     options: [
@@ -371,14 +378,15 @@ export const sampleQuestions: Question[] = [
       "When threads are scheduled in a specific order",
     ],
     correctAnswer: 1,
-    difficulty: "Hard",
+    difficulty: TestDifficultyEnum.HARD,
     category: "Concurrency",
   },
   {
     id: "hard2",
-    type: "coding",
+    type: TestQuestionTypeEnum.CODING,
     title: "Longest Palindromic Substring",
-    description: "Given a string s, return the longest palindromic substring in s.",
+    description:
+      "Given a string s, return the longest palindromic substring in s.",
     examples: [
       {
         input: 's = "babad"',
@@ -390,8 +398,11 @@ export const sampleQuestions: Question[] = [
         output: '"bb"',
       },
     ],
-    constraints: ["1 <= s.length <= 1000", "s consist of only digits and English letters."],
-    difficulty: "Medium",
+    constraints: [
+      "1 <= s.length <= 1000",
+      "s consist of only digits and English letters.",
+    ],
+    difficulty: TestDifficultyEnum.MEDIUM,
     category: "Algorithms",
     starterCode: {
       javascript: `function longestPalindrome(s) {
@@ -408,65 +419,85 @@ export const sampleQuestions: Question[] = [
 }`,
     },
   },
-]
+];
 
 // Helper functions for question management
-export function getQuestionsByCategory(category: string): Question[] {
-  return sampleQuestions.filter((q) => q.category === category)
+export function getQuestionsByCategory(category: string): QuestionT[] {
+  return sampleQuestions.filter((q) => q.category === category);
 }
 
-export function getQuestionsByDifficulty(difficulty: "Easy" | "Medium" | "Hard"): Question[] {
-  return sampleQuestions.filter((q) => q.difficulty === difficulty)
+export function getQuestionsByDifficulty(
+  difficulty: TestDifficultyEnum
+): QuestionT[] {
+  return sampleQuestions.filter((q) => q.difficulty === difficulty);
 }
 
-export function getQuestionsByType(type: "multiple-choice" | "coding" | "true-false"): Question[] {
-  return sampleQuestions.filter((q) => q.type === type)
+export function getQuestionsByType(type: TestQuestionTypeEnum): QuestionT[] {
+  return sampleQuestions.filter((q) => q.type === type);
 }
 
 export function getRandomQuestions(
   count: number,
   categories?: string[],
-  difficulty?: "Easy" | "Medium" | "Hard" | "Mixed",
-): Question[] {
-  let filteredQuestions = [...sampleQuestions]
+  difficulty?: TestDifficultyEnum
+): QuestionT[] {
+  let filteredQuestions = [...sampleQuestions];
 
   if (categories && categories.length > 0) {
-    filteredQuestions = filteredQuestions.filter((q) => categories.includes(q.category))
+    filteredQuestions = filteredQuestions.filter((q) =>
+      categories.includes(q.category)
+    );
   }
 
   if (difficulty && difficulty !== "Mixed") {
-    filteredQuestions = filteredQuestions.filter((q) => q.difficulty === difficulty)
+    filteredQuestions = filteredQuestions.filter(
+      (q) => q.difficulty === difficulty
+    );
   }
 
   // Shuffle and return requested count
-  const shuffled = filteredQuestions.sort(() => 0.5 - Math.random())
-  return shuffled.slice(0, Math.min(count, shuffled.length))
+  const shuffled = filteredQuestions.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, Math.min(count, shuffled.length));
 }
 
 export function getAllCategories(): string[] {
-  const categories = new Set(sampleQuestions.map((q) => q.category))
-  return Array.from(categories).sort()
+  const categories = new Set(sampleQuestions.map((q) => q.category));
+  return Array.from(categories).sort();
 }
 
 export function getQuestionStats() {
   const stats = {
     total: sampleQuestions.length,
     byDifficulty: {
-      Easy: sampleQuestions.filter((q) => q.difficulty === "Easy").length,
-      Medium: sampleQuestions.filter((q) => q.difficulty === "Medium").length,
-      Hard: sampleQuestions.filter((q) => q.difficulty === "Hard").length,
+      Easy: sampleQuestions.filter(
+        (q) => q.difficulty === TestDifficultyEnum.EASY
+      ).length,
+      Medium: sampleQuestions.filter(
+        (q) => q.difficulty === TestDifficultyEnum.MEDIUM
+      ).length,
+      Hard: sampleQuestions.filter(
+        (q) => q.difficulty === TestDifficultyEnum.HARD
+      ).length,
     },
     byType: {
-      "multiple-choice": sampleQuestions.filter((q) => q.type === "multiple-choice").length,
-      coding: sampleQuestions.filter((q) => q.type === "coding").length,
-      "true-false": sampleQuestions.filter((q) => q.type === "true-false").length,
+      "multiple-choice": sampleQuestions.filter(
+        (q) => q.type === TestQuestionTypeEnum.MULTIPLE_CHOICE
+      ).length,
+      coding: sampleQuestions.filter(
+        (q) => q.type === TestQuestionTypeEnum.CODING
+      ).length,
+      "true-false": sampleQuestions.filter(
+        (q) => q.type === TestQuestionTypeEnum.TRUE_FALSE
+      ).length,
     },
     byCategory: {} as Record<string, number>,
-  }
+  };
 
   getAllCategories().forEach((category) => {
-    stats.byCategory[category] = sampleQuestions.filter((q) => q.category === category).length
-  })
+    stats.byCategory[category] = sampleQuestions.filter(
+      (q) => q.category === category
+    ).length;
+  });
 
-  return stats
+  return stats;
 }

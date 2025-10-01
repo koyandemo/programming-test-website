@@ -8,23 +8,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Clock, Play, CheckCircle, XCircle } from "lucide-react"
+import { CodingQuestionT } from "@/types/question.type"
 
 interface CodingQuestionProps {
-  question: {
-    id: string
-    title: string
-    description: string
-    examples: Array<{
-      input: string
-      output: string
-      explanation?: string
-    }>
-    constraints: string[]
-    difficulty: "Easy" | "Medium" | "Hard"
-    category: string
-    timeLimit?: number
-    starterCode?: Record<string, string>
-  }
+  question: CodingQuestionT
   onSubmit: (questionId: string, code: string, language: string) => void
   timeRemaining?: number
 }
