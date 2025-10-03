@@ -7,6 +7,7 @@ import Link from "next/link"
 
 export default function CategoriesPage() {
   const categories = getCategoriesWithStats()
+  
 
   return (
     <div className="min-h-screen bg-background">

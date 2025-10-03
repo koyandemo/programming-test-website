@@ -12,7 +12,12 @@ export default function TestPage() {
     TestViewEnum.SELECTION
   );
 
-  const { testSessionStore, addTestSessionStore } = useTestSessionStore();
+  const {
+    testSessionStore,
+    addTestSessionStore,
+    fromCategoryStore,
+    addFromCategoryStore,
+  } = useTestSessionStore();
   const [testSession, setTestSession] = useState<TestSessionT | null>(null);
   const [isCountDown, setIsCountDown] = useState<boolean>(false);
 
@@ -36,7 +41,6 @@ export default function TestPage() {
   };
 
   const handleRetakeTest = () => {
-    // setTestSession(null);
     setTestSession(testSessionStore);
     setCurrentView(TestViewEnum.SELECTION);
   };
@@ -51,8 +55,8 @@ export default function TestPage() {
       {currentView === TestViewEnum.SELECTION && (
         <TestSelection
           onStartTest={handleStartTest}
-          isCountDown={isCountDown}
           setIsCountDown={setIsCountDown}
+          fromCategoryStore={fromCategoryStore}
         />
       )}
 
@@ -61,6 +65,7 @@ export default function TestPage() {
           session={testSession}
           isCountDown={isCountDown}
           onComplete={handleTestComplete}
+          addFromCategoryStore={addFromCategoryStore}
         />
       )}
 
