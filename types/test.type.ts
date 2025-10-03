@@ -38,6 +38,7 @@ export interface TestAnswerT {
 
 export interface TestSessionT {
   config: TestConfigT;
+  isCountDowning: boolean;
   answers: TestAnswerT[];
   startTime: number;
   endTime?: number;

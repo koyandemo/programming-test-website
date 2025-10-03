@@ -1,84 +1,19 @@
 import { QuestionT } from "@/types/question.type";
 import { TestDifficultyEnum, TestQuestionTypeEnum } from "@/types/test.type";
+import { JS_QUESTIONS_DATA } from "./javaScriptQuestionData";
+import { PYTHON_QUESTIONS_DATA } from "./pythonQuestionData";
+import { SYSTEM_DESIGN_QUESTIONS_DATA } from "./systemDesignData";
+import { DATABASE_QUESTIONS_DATA } from "./databaseQuestionData";
+import { WEB_DEVELOPMENT_QUESTIONS_DATA } from "./webDevelopmentQuestionData";
+import { REACT_QUESTIONS_DATA } from "./reactQuestionData";
 
-export const sampleQuestions: QuestionT[] = [
-  // JavaScript Questions
-  {
-    id: "js1",
-    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
-    title: "JavaScript Array Methods",
-    description:
-      "Which array method creates a new array with all elements that pass a test implemented by the provided function?",
-    options: ["map()", "filter()", "reduce()", "forEach()"],
-    correctAnswer: 1,
-    difficulty: TestDifficultyEnum.EASY,
-    category: "JavaScript",
-  },
-  {
-    id: "js2",
-    type: TestQuestionTypeEnum.TRUE_FALSE,
-    title: "JavaScript Hoisting",
-    statement:
-      "In JavaScript, variable declarations using 'let' and 'const' are hoisted to the top of their scope and can be accessed before declaration.",
-    correctAnswer: false,
-    explanation:
-      "While 'let' and 'const' declarations are hoisted, they are not initialized and cannot be accessed before their declaration due to the Temporal Dead Zone.",
-    difficulty: TestDifficultyEnum.MEDIUM,
-    category: "JavaScript",
-  },
-  {
-    id: "js3",
-    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
-    title: "JavaScript Closures",
-    description:
-      "What will be the output of the following code?\n\nfor (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 100);\n}",
-    options: ["0 1 2", "3 3 3", "undefined undefined undefined", "Error"],
-    correctAnswer: 1,
-    difficulty: TestDifficultyEnum.MEDIUM,
-    category: "JavaScript",
-  },
-  {
-    id: "js4",
-    type: TestQuestionTypeEnum.TRUE_FALSE,
-    title: "JavaScript Equality",
-    statement: "In JavaScript, the expression '0' == false evaluates to true.",
-    correctAnswer: true,
-    explanation:
-      "Due to type coercion, '0' is converted to 0 (number) and false is converted to 0, so 0 == 0 is true.",
-    difficulty: TestDifficultyEnum.EASY,
-    category: "JavaScript",
-  },
-
-  // Python Questions
-  {
-    id: "py1",
-    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
-    title: "Python List Comprehension",
-    description:
-      "What is the equivalent list comprehension for the following code?\n\nresult = []\nfor x in range(10):\n    if x % 2 == 0:\n        result.append(x**2)",
-    options: [
-      "[x**2 for x in range(10)]",
-      "[x**2 for x in range(10) if x % 2 == 0]",
-      "[x for x in range(10) if x**2 % 2 == 0]",
-      "[x**2 if x % 2 == 0 for x in range(10)]",
-    ],
-    correctAnswer: 1,
-    difficulty: TestDifficultyEnum.EASY,
-    category: "Python",
-  },
-  {
-    id: "py2",
-    type: TestQuestionTypeEnum.TRUE_FALSE,
-    title: "Python Mutability",
-    statement:
-      "In Python, tuples are mutable, meaning you can change their elements after creation.",
-    correctAnswer: false,
-    explanation:
-      "Tuples are immutable in Python. Once created, you cannot change, add, or remove elements from a tuple.",
-    difficulty: TestDifficultyEnum.EASY,
-    category: "Python",
-  },
-
+export const QUESTIONS_DATA: QuestionT[] = [
+  ...JS_QUESTIONS_DATA,
+  ...PYTHON_QUESTIONS_DATA,
+  ...SYSTEM_DESIGN_QUESTIONS_DATA,
+  ...DATABASE_QUESTIONS_DATA,
+  ...WEB_DEVELOPMENT_QUESTIONS_DATA,
+  ...REACT_QUESTIONS_DATA,
   // Data Structures & Algorithms
   {
     id: "dsa1",
@@ -180,111 +115,7 @@ export const sampleQuestions: QuestionT[] = [
     difficulty: TestDifficultyEnum.EASY,
     category: "Data Structures",
   },
-
-  // System Design
-  {
-    id: "sd1",
-    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
-    title: "Database Scaling",
-    description:
-      "Which approach is typically used to handle read-heavy workloads in database systems?",
-    options: [
-      "Vertical scaling only",
-      "Read replicas",
-      "Write sharding",
-      "Connection pooling",
-    ],
-    correctAnswer: 1,
-    difficulty: TestDifficultyEnum.MEDIUM,
-    category: "System Design",
-  },
-  {
-    id: "sd2",
-    type: TestQuestionTypeEnum.TRUE_FALSE,
-    title: "Microservices Architecture",
-    statement:
-      "In a microservices architecture, all services should share the same database to ensure data consistency.",
-    correctAnswer: false,
-    explanation:
-      "Microservices should have their own databases to maintain independence and avoid tight coupling between services.",
-    difficulty: TestDifficultyEnum.MEDIUM,
-    category: "System Design",
-  },
-
-  // Database Questions
-  {
-    id: "db1",
-    type: TestQuestionTypeEnum.TRUE_FALSE,
-    title: "Database Normalization",
-    statement:
-      "Third Normal Form (3NF) eliminates all transitive dependencies in a database table.",
-    correctAnswer: true,
-    explanation:
-      "3NF requires that all non-key attributes are fully functionally dependent on the primary key and eliminates transitive dependencies.",
-    difficulty: TestDifficultyEnum.MEDIUM,
-    category: "Database",
-  },
-  {
-    id: "db2",
-    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
-    title: "SQL Joins",
-    description:
-      "Which SQL JOIN returns all records from both tables, filling in NULL values where there's no match?",
-    options: ["INNER JOIN", "LEFT JOIN", "RIGHT JOIN", "FULL OUTER JOIN"],
-    correctAnswer: 3,
-    difficulty: TestDifficultyEnum.EASY,
-    category: "Database",
-  },
-
-  // Web Development
-  {
-    id: "web1",
-    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
-    title: "HTTP Status Codes",
-    description: "What does the HTTP status code 404 indicate?",
-    options: ["Server Error", "Unauthorized", "Not Found", "Bad Request"],
-    correctAnswer: 2,
-    difficulty: TestDifficultyEnum.EASY,
-    category: "Web Development",
-  },
-  {
-    id: "web2",
-    type: TestQuestionTypeEnum.TRUE_FALSE,
-    title: "REST API Design",
-    statement:
-      "In RESTful API design, the HTTP method POST should be used for retrieving data from the server.",
-    correctAnswer: false,
-    explanation:
-      "GET method should be used for retrieving data. POST is typically used for creating new resources.",
-    difficulty: TestDifficultyEnum.EASY,
-    category: "Web Development",
-  },
-
-  // React Questions
-  {
-    id: "react1",
-    type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
-    title: "React Hooks",
-    description:
-      "Which React Hook is used to perform side effects in functional components?",
-    options: ["useState", "useEffect", "useContext", "useReducer"],
-    correctAnswer: 1,
-    difficulty: TestDifficultyEnum.EASY,
-    category: "React",
-  },
-  {
-    id: "react2",
-    type: TestQuestionTypeEnum.TRUE_FALSE,
-    title: "React State",
-    statement:
-      "In React, you should directly mutate the state object to update component state.",
-    correctAnswer: false,
-    explanation:
-      "State should never be mutated directly. Always use setState or the state setter function from useState to update state.",
-    difficulty: TestDifficultyEnum.EASY,
-    category: "React",
-  },
-
+  
   // Advanced Coding Problems
   {
     id: "adv1",
@@ -423,17 +254,17 @@ export const sampleQuestions: QuestionT[] = [
 
 // Helper functions for question management
 export function getQuestionsByCategory(category: string): QuestionT[] {
-  return sampleQuestions.filter((q) => q.category === category);
+  return QUESTIONS_DATA.filter((q) => q.category === category);
 }
 
 export function getQuestionsByDifficulty(
   difficulty: TestDifficultyEnum
 ): QuestionT[] {
-  return sampleQuestions.filter((q) => q.difficulty === difficulty);
+  return QUESTIONS_DATA.filter((q) => q.difficulty === difficulty);
 }
 
 export function getQuestionsByType(type: TestQuestionTypeEnum): QuestionT[] {
-  return sampleQuestions.filter((q) => q.type === type);
+  return QUESTIONS_DATA.filter((q) => q.type === type);
 }
 
 export function getRandomQuestions(
@@ -441,7 +272,7 @@ export function getRandomQuestions(
   categories?: string[],
   difficulty?: TestDifficultyEnum
 ): QuestionT[] {
-  let filteredQuestions = [...sampleQuestions];
+  let filteredQuestions = [...QUESTIONS_DATA];
 
   if (categories && categories.length > 0) {
     filteredQuestions = filteredQuestions.filter((q) =>
@@ -461,32 +292,32 @@ export function getRandomQuestions(
 }
 
 export function getAllCategories(): string[] {
-  const categories = new Set(sampleQuestions.map((q) => q.category));
+  const categories = new Set(QUESTIONS_DATA.map((q) => q.category));
   return Array.from(categories).sort();
 }
 
 export function getQuestionStats() {
   const stats = {
-    total: sampleQuestions.length,
+    total: QUESTIONS_DATA.length,
     byDifficulty: {
-      Easy: sampleQuestions.filter(
+      Easy: QUESTIONS_DATA.filter(
         (q) => q.difficulty === TestDifficultyEnum.EASY
       ).length,
-      Medium: sampleQuestions.filter(
+      Medium: QUESTIONS_DATA.filter(
         (q) => q.difficulty === TestDifficultyEnum.MEDIUM
       ).length,
-      Hard: sampleQuestions.filter(
+      Hard: QUESTIONS_DATA.filter(
         (q) => q.difficulty === TestDifficultyEnum.HARD
       ).length,
     },
     byType: {
-      "multiple-choice": sampleQuestions.filter(
+      "multiple-choice": QUESTIONS_DATA.filter(
         (q) => q.type === TestQuestionTypeEnum.MULTIPLE_CHOICE
       ).length,
-      coding: sampleQuestions.filter(
+      coding: QUESTIONS_DATA.filter(
         (q) => q.type === TestQuestionTypeEnum.CODING
       ).length,
-      "true-false": sampleQuestions.filter(
+      "true-false": QUESTIONS_DATA.filter(
         (q) => q.type === TestQuestionTypeEnum.TRUE_FALSE
       ).length,
     },
@@ -494,7 +325,7 @@ export function getQuestionStats() {
   };
 
   getAllCategories().forEach((category) => {
-    stats.byCategory[category] = sampleQuestions.filter(
+    stats.byCategory[category] = QUESTIONS_DATA.filter(
       (q) => q.category === category
     ).length;
   });

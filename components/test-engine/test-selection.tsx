@@ -17,91 +17,35 @@ import {
   Code,
   Database,
   Cpu,
+  Timer,
+  TimerOff,
 } from "lucide-react";
 import Link from "next/link";
-import { TestConfigT, TestDifficultyEnum } from "@/types/test.type";
+import { TestConfigT } from "@/types/test.type";
+import { GENRES_DATA } from "@/database/genreData";
+import { getDifficultyColor } from "@/lib/utils";
+import { Dispatch, SetStateAction, useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface TestSelectionProps {
+  isCountDown: boolean;
+  setIsCountDown: Dispatch<SetStateAction<boolean>>;
   onStartTest: (config: TestConfigT) => void;
 }
 
-export function TestSelection({ onStartTest }: TestSelectionProps) {
-  const testConfigs: TestConfigT[] = [
-    {
-      id: "js-fundamentals",
-      title: "JavaScript Fundamentals",
-      description:
-        "Test your knowledge of JavaScript basics, ES6+ features, and core concepts",
-      duration: 30,
-      questionCount: 15,
-      difficulty: TestDifficultyEnum.EASY,
-      categories: ["JavaScript", "Programming Basics"],
-    },
-    {
-      id: "data-structures",
-      title: "Data Structures & Algorithms",
-      description:
-        "Challenge yourself with arrays, linked lists, trees, and algorithmic thinking",
-      duration: 45,
-      questionCount: 20,
-      difficulty: TestDifficultyEnum.MEDIUM,
-      categories: ["Data Structures", "Algorithms"],
-    },
-    {
-      id: "system-design",
-      title: "System Design Concepts",
-      description:
-        "Explore scalability, databases, caching, and distributed systems",
-      duration: 60,
-      questionCount: 12,
-      difficulty: TestDifficultyEnum.HARD,
-      categories: ["System Design", "Architecture"],
-    },
-    {
-      id: "python-coding",
-      title: "Python Programming",
-      description: "Solve coding problems and demonstrate Python proficiency",
-      duration: 40,
-      questionCount: 18,
-      difficulty: TestDifficultyEnum.MEDIUM,
-      categories: ["Python", "Coding Challenges"],
-    },
-    {
-      id: "full-stack-mixed",
-      title: "Full-Stack Developer Assessment",
-      description:
-        "Comprehensive test covering frontend, backend, and database concepts",
-      duration: 75,
-      questionCount: 25,
-      difficulty: TestDifficultyEnum.MIXED,
-      categories: ["Frontend", "Backend", "Database"],
-    },
-    {
-      id: "quick-assessment",
-      title: "Quick Skills Assessment",
-      description:
-        "A rapid-fire test to gauge your overall programming knowledge",
-      duration: 15,
-      questionCount: 10,
-      difficulty: TestDifficultyEnum.MIXED,
-      categories: ["General Programming"],
-    },
-  ];
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case "Easy":
-        return "bg-green-500/10 text-green-400 border-green-500/20";
-      case "Medium":
-        return "bg-yellow-500/10 text-yellow-400 border-yellow-500/20";
-      case "Hard":
-        return "bg-red-500/10 text-red-400 border-red-500/20";
-      case "Mixed":
-        return "bg-blue-500/10 text-blue-400 border-blue-500/20";
-      default:
-        return "bg-muted text-muted-foreground";
-    }
-  };
+export function TestSelection({
+  isCountDown,
+  setIsCountDown,
+  onStartTest,
+}: TestSelectionProps) {
+  const [open, setOpen] = useState(false);
+  const [selectedConfig, setSelectedConfig] = useState<TestConfigT | null>(null);
 
   const getIcon = (categories: string[]) => {
     if (
@@ -115,6 +59,19 @@ export function TestSelection({ onStartTest }: TestSelectionProps) {
       return <Database className="w-6 h-6" />;
     }
     return <Code className="w-6 h-6" />;
+  };
+
+  const handleOpenDialog = (config: TestConfigT) => {
+    setSelectedConfig(config);
+    setOpen(true);
+  };
+
+  const handleChoice = (countdown: boolean) => {
+    setIsCountDown(countdown);
+    if (selectedConfig) {
+      onStartTest(selectedConfig);
+    }
+    setOpen(false);
   };
 
   return (
@@ -150,7 +107,7 @@ export function TestSelection({ onStartTest }: TestSelectionProps) {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testConfigs.map((config) => (
+            {GENRES_DATA.map((config) => (
               <Card
                 key={config.id}
                 className="border-border bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-200 group cursor-pointer"
@@ -199,7 +156,7 @@ export function TestSelection({ onStartTest }: TestSelectionProps) {
                   </div>
 
                   <Button
-                    onClick={() => onStartTest(config)}
+                    onClick={() => handleOpenDialog(config)}
                     className="w-full cursor-pointer group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                     variant="outline"
                   >
@@ -210,45 +167,43 @@ export function TestSelection({ onStartTest }: TestSelectionProps) {
               </Card>
             ))}
           </div>
-
-          {/* Info Section */}
-          <div className="mt-16 text-center">
-            <Card className="max-w-3xl mx-auto bg-card/30 border-border">
-              <CardContent className="pt-6">
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="text-center">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                      <Target className="w-6 h-6 text-primary" />
-                    </div>
-                    <h3 className="font-semibold mb-2">No Registration</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Start testing immediately without any signup process
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                      <Clock className="w-6 h-6 text-accent" />
-                    </div>
-                    <h3 className="font-semibold mb-2">Timed Challenges</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Real interview conditions with time limits
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                      <FileText className="w-6 h-6 text-primary" />
-                    </div>
-                    <h3 className="font-semibold mb-2">Instant Results</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Get detailed feedback immediately after completion
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
         </div>
       </section>
+
+      {/* Countdown Choice Dialog */}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Select Test Mode</DialogTitle>
+            <DialogDescription>
+              Do you want to enable countdown mode for this test?
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <Card
+              className="cursor-pointer hover:bg-accent transition p-4 text-center"
+              onClick={() => handleChoice(true)}
+            >
+              <Timer className="w-8 h-8 mx-auto text-primary mb-2" />
+              <h3 className="font-semibold">Countdown</h3>
+              <p className="text-sm text-muted-foreground">
+                Timed challenge with countdown
+              </p>
+            </Card>
+
+            <Card
+              className="cursor-pointer hover:bg-accent transition p-4 text-center"
+              onClick={() => handleChoice(false)}
+            >
+              <TimerOff className="w-8 h-8 mx-auto text-destructive mb-2" />
+              <h3 className="font-semibold">No Countdown</h3>
+              <p className="text-sm text-muted-foreground">
+                Practice freely without a timer
+              </p>
+            </Card>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
