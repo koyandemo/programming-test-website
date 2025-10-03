@@ -21,12 +21,14 @@ interface TestEngineProps {
   session: TestSessionT;
   isCountDown: boolean;
   onComplete: (session: TestSessionT) => void;
+  addFromCategoryStore: (value: boolean) => void;
 }
 
 export function TestEngine({
   session,
   isCountDown,
   onComplete,
+  addFromCategoryStore
 }: TestEngineProps) {
   const [currentSession, setCurrentSession] = useState<TestSessionT>(session);
   const [timeRemaining, setTimeRemaining] = useState(
@@ -40,6 +42,10 @@ export function TestEngine({
     )
   );
   const [showTimeWarning, setShowTimeWarning] = useState(false);
+
+  useEffect(() => {
+    addFromCategoryStore(false);
+  },[])
 
   const handleTimeUp = useCallback(() => {
     const completedSession = {

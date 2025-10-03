@@ -12,7 +12,6 @@ import { Badge } from "@/components/ui/badge";
 import {
   Clock,
   FileText,
-  Target,
   ArrowRight,
   Code,
   Database,
@@ -21,10 +20,10 @@ import {
   TimerOff,
 } from "lucide-react";
 import Link from "next/link";
-import { TestConfigT } from "@/types/test.type";
+import type { TestConfigT } from "@/types/test.type";
 import { GENRES_DATA } from "@/database/genreData";
 import { getDifficultyColor } from "@/lib/utils";
-import { Dispatch, SetStateAction, useState } from "react";
+import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -32,20 +31,37 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useRouter } from "next/navigation";
 
 interface TestSelectionProps {
-  isCountDown: boolean;
+  fromCategoryStore: boolean;
   setIsCountDown: Dispatch<SetStateAction<boolean>>;
   onStartTest: (config: TestConfigT) => void;
 }
 
 export function TestSelection({
-  isCountDown,
+  fromCategoryStore,
   setIsCountDown,
   onStartTest,
 }: TestSelectionProps) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [selectedConfig, setSelectedConfig] = useState<TestConfigT | null>(null);
+  const [selectedConfig, setSelectedConfig] = useState<TestConfigT | null>(
+    null
+  );
+
+  useEffect(() => {
+    const pendingConfig = sessionStorage.getItem("pendingTestConfig");
+    if (pendingConfig) {
+      try {
+        const config = JSON.parse(pendingConfig);
+        sessionStorage.removeItem("pendingTestConfig");
+        handleOpenDialog(config);
+      } catch (error) {
+        console.error("Failed to parse pending test config:", error);
+      }
+    }
+  }, []);
 
   const getIcon = (categories: string[]) => {
     if (
@@ -76,102 +92,97 @@ export function TestSelection({
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Code className="w-5 h-5 text-primary-foreground" />
+      {!fromCategoryStore && (
+        <div>
+          {/* Test Selection */}
+          <section className="py-12 px-4">
+            <div className="container mx-auto max-w-6xl">
+              <div className="text-center mb-12">
+                <h1 className="text-3xl md:text-4xl font-bold mb-4">
+                  Select Your Programming Test
+                </h1>
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                  Choose from our curated collection of programming assessments
+                  designed to test your skills
+                </p>
               </div>
-              <span className="text-xl font-bold text-foreground">
-                CodeTest Pro
-              </span>
-            </Link>
-            <Badge variant="secondary">Choose Your Test</Badge>
-          </div>
-        </div>
-      </header>
 
-      {/* Test Selection */}
-      <section className="py-12 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              Select Your Programming Test
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Choose from our curated collection of programming assessments
-              designed to test your skills
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {GENRES_DATA.map((config) => (
-              <Card
-                key={config.id}
-                className="border-border bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-200 group cursor-pointer"
-              >
-                <CardHeader>
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                      {getIcon(config.categories)}
-                    </div>
-                    <Badge
-                      variant="outline"
-                      className={getDifficultyColor(config.difficulty)}
-                    >
-                      {config.difficulty}
-                    </Badge>
-                  </div>
-                  <CardTitle className="group-hover:text-primary transition-colors text-balance">
-                    {config.title}
-                  </CardTitle>
-                  <CardDescription className="text-balance">
-                    {config.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      <span>{config.duration} min</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <FileText className="w-4 h-4" />
-                      <span>{config.questionCount} questions</span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {config.categories.map((category: string) => (
-                      <Badge
-                        key={category}
-                        variant="secondary"
-                        className="text-xs"
-                      >
-                        {category}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  <Button
-                    onClick={() => handleOpenDialog(config)}
-                    className="w-full cursor-pointer group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-                    variant="outline"
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {GENRES_DATA.map((config) => (
+                  <Card
+                    key={config.id}
+                    className="border-border bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-200 group cursor-pointer"
                   >
-                    Start Test
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                    <CardHeader>
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                          {getIcon(config.categories)}
+                        </div>
+                        <Badge
+                          variant="outline"
+                          className={getDifficultyColor(config.difficulty)}
+                        >
+                          {config.difficulty}
+                        </Badge>
+                      </div>
+                      <CardTitle className="group-hover:text-primary transition-colors text-balance">
+                        {config.title}
+                      </CardTitle>
+                      <CardDescription className="text-balance">
+                        {config.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-1">
+                          <Clock className="w-4 h-4" />
+                          <span>{config.duration} min</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <FileText className="w-4 h-4" />
+                          <span>{config.questionCount} questions</span>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {config.categories.map((category: string) => (
+                          <Badge
+                            key={category}
+                            variant="secondary"
+                            className="text-xs"
+                          >
+                            {category}
+                          </Badge>
+                        ))}
+                      </div>
+
+                      <Button
+                        onClick={() => handleOpenDialog(config)}
+                        className="w-full cursor-pointer group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                        variant="outline"
+                      >
+                        Start Test
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
+      )}
 
       {/* Countdown Choice Dialog */}
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog
+        open={open}
+        onOpenChange={() => {
+          setOpen(false);
+          if (fromCategoryStore) {
+            router.back();
+          }
+        }}
+      >
         <DialogContent className="max-w-lg">
           <DialogHeader>
             <DialogTitle>Select Test Mode</DialogTitle>
