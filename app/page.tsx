@@ -52,7 +52,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
-        <div className="container relative mx-auto px-4 py-24">
+        <div className="container relative mx-auto px-4 pt-10 pb-24">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
               <Sparkles className="w-4 h-4" />
@@ -143,7 +143,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 hidden">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Why Choose CodeTest Pro?</h2>
@@ -170,7 +170,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 border-t border-border">
+      <section className="py-20 px-4 border-t border-border hidden">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Ready to Test Your Skills?</h2>
           <p className="text-lg text-muted-foreground mb-8">
