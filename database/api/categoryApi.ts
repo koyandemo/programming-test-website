@@ -2,7 +2,7 @@ import type { CategoryT } from "@/types/category.type";
 import { getQuestionStats } from "../question/questionData";
 import matter from "gray-matter";
 //@ts-ignore
-import categoryData from "@/database/mdx/categoryData.mdx?raw";
+import categoryData from "../mdx/categoryData.mdx?raw";
 
 
 function parseMDXCategories(): CategoryT[] {
