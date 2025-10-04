@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import {
   getCategoryBySlug,
   getRelatedCategories,
-} from "@/database/categoryData";
+} from "@/database/api/categoryApi";
 import { getQuestionsByCategory } from "@/database/question/questionData";
 import useTestSessionStore from "@/store/testSessionStore";
 import { type TestConfigT, TestDifficultyEnum } from "@/types/test.type";
