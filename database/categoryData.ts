@@ -1,4 +1,3 @@
-
 import type { CategoryT } from "@/types/category.type"
 import { getQuestionStats } from "./question/questionData"
 import { parseMDXCategories } from "@/lib/parse-mdx-categories"
