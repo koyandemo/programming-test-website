@@ -120,7 +120,7 @@ importers:
         specifier: latest
         version: 1.5.1(next@14.2.16(react-dom@18.0.0(react@18.0.0))(react@18.0.0))
       gray-matter:
-        specifier: latest
+        specifier: 4.0.3
         version: 4.0.3
       immer:
         specifier: latest
