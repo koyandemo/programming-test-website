@@ -22,12 +22,10 @@ import {
   RotateCcw,
   Share2,
   Home,
-  Code,
 } from "lucide-react";
-import Link from "next/link";
 import { TestSessionT } from "@/types/test.type";
 import { getPerformanceLevel } from "@/lib/utils";
-import { QUESTIONS_DATA } from "@/database/question/questionData";
+import { QUESTIONS_DATA } from "@/database/api/questionApi";
 
 interface TestResultsProps {
   session: TestSessionT;
@@ -96,7 +94,7 @@ export function TestResults({
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm">
+      {/* <header className="border-b border-border bg-card/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
@@ -110,7 +108,7 @@ export function TestResults({
             <Badge variant="secondary">Test Complete</Badge>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Results Content */}
       <main className="py-8 px-4">

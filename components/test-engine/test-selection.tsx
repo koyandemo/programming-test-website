@@ -19,9 +19,7 @@ import {
   Timer,
   TimerOff,
 } from "lucide-react";
-import Link from "next/link";
 import type { TestConfigT } from "@/types/test.type";
-import { GENRES_DATA } from "@/database/genreData";
 import { getDifficultyColor } from "@/lib/utils";
 import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
 import {
@@ -32,6 +30,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
+import { GENRES_DATA } from "@/database/api/genreApi";
 
 interface TestSelectionProps {
   fromCategoryStore: boolean;

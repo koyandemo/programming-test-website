@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import useTestSessionStore from "@/store/testSessionStore"
-import { getCategoriesWithStats } from "@/database/categoryData"
+import { getCategoriesWithStats } from "@/database/api/categoryApi"
 import { BookOpen, Brain, CheckCircle, Clock, Code2, Sparkles, Target, TrendingUp, Zap, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"

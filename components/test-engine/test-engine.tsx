@@ -14,8 +14,12 @@ import {
   Flag,
   AlertTriangle,
 } from "lucide-react";
-import { TestAnswerT, TestSessionT } from "@/types/test.type";
-import { getRandomQuestions } from "@/database/question/questionData";
+import {
+  TestAnswerT,
+  TestQuestionTypeEnum,
+  TestSessionT,
+} from "@/types/test.type";
+import { getRandomQuestions } from "@/database/api/questionApi";
 
 interface TestEngineProps {
   session: TestSessionT;
@@ -28,7 +32,7 @@ export function TestEngine({
   session,
   isCountDown,
   onComplete,
-  addFromCategoryStore
+  addFromCategoryStore,
 }: TestEngineProps) {
   const [currentSession, setCurrentSession] = useState<TestSessionT>(session);
   const [timeRemaining, setTimeRemaining] = useState(
@@ -45,7 +49,7 @@ export function TestEngine({
 
   useEffect(() => {
     addFromCategoryStore(false);
-  },[])
+  }, []);
 
   const handleTimeUp = useCallback(() => {
     const completedSession = {
@@ -222,7 +226,7 @@ export function TestEngine({
       {/* Question Content */}
       <main className="py-8 px-4">
         <div className="container mx-auto">
-          {currentQuestion.type === "multiple-choice" && (
+          {currentQuestion.type === TestQuestionTypeEnum.MULTIPLE_CHOICE && (
             <MultipleChoiceQuestion
               question={currentQuestion}
               onAnswer={handleAnswer}
@@ -231,7 +235,7 @@ export function TestEngine({
             />
           )}
 
-          {currentQuestion.type === "coding" && (
+          {currentQuestion.type === TestQuestionTypeEnum.CODING && (
             <CodingQuestion
               question={currentQuestion}
               onSubmit={(questionId, code, language) => {
@@ -241,7 +245,7 @@ export function TestEngine({
             />
           )}
 
-          {currentQuestion.type === "true-false" && (
+          {currentQuestion.type === TestQuestionTypeEnum.TRUE_FALSE && (
             <TrueFalseQuestion
               question={currentQuestion}
               onAnswer={handleAnswer}

@@ -1,7 +1,7 @@
 "use client"
 
 import { Card } from "@/components/ui/card"
-import { getCategoriesWithStats } from "@/database/categoryData"
+import { getCategoriesWithStats } from "@/database/api/categoryApi"
 import { ArrowRight, BookOpen } from "lucide-react"
 import Link from "next/link"
 
