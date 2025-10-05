@@ -1,8 +1,7 @@
 import type { CategoryT } from "@/types/category.type";
-import { getQuestionStats } from "../question/questionData";
 import matter from "gray-matter";
-//@ts-ignore
 import categoryData from "../mdx/categoryData.mdx?raw";
+import { getQuestionStats } from "./questionApi";
 
 
 function parseMDXCategories(): CategoryT[] {

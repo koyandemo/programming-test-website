@@ -5,16 +5,16 @@ export enum TestViewEnum {
 }
 
 export enum TestDifficultyEnum {
-  EASY = "Easy",
-  MEDIUM = "Medium",
-  HARD = "Hard",
-  MIXED = "Mixed",
+  EASY = "EASY",
+  MEDIUM = "MEDIUM",
+  HARD = "HARD",
+  MIXED = "MIXED",
 }
 
 export enum TestQuestionTypeEnum {
-  MULTIPLE_CHOICE = "multiple-choice",
-  CODING = "coding",
-  TRUE_FALSE = "true-false",
+  MULTIPLE_CHOICE = "MULTIPLE_CHOICE",
+  CODING = "CODING",
+  TRUE_FALSE = "TRUE_FALSE",
 //   MIXED = "mixed",
 }
 

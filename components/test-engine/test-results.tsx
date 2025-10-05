@@ -22,12 +22,10 @@ import {
   RotateCcw,
   Share2,
   Home,
-  Code,
 } from "lucide-react";
-import Link from "next/link";
 import { TestSessionT } from "@/types/test.type";
 import { getPerformanceLevel } from "@/lib/utils";
-import { QUESTIONS_DATA } from "@/database/question/questionData";
+import { QUESTIONS_DATA } from "@/database/api/questionApi";
 
 interface TestResultsProps {
   session: TestSessionT;

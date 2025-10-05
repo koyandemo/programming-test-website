@@ -6,7 +6,7 @@ import {
   getCategoryBySlug,
   getRelatedCategories,
 } from "@/database/api/categoryApi";
-import { getQuestionsByCategory } from "@/database/question/questionData";
+import { getQuestionsByCategory } from "@/database/api/questionApi";
 import useTestSessionStore from "@/store/testSessionStore";
 import { type TestConfigT, TestDifficultyEnum } from "@/types/test.type";
 import {
