@@ -1,72 +1,96 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Clock, FileText, ArrowRight, Code, Database, Cpu, Timer, TimerOff } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
-import type { TestConfigT } from "@/types/test.type"
-import { getDifficultyColor } from "@/lib/utils"
-import { GENRES_DATA } from "@/database/api/genreApi"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Clock,
+  FileText,
+  ArrowRight,
+  Code,
+  Database,
+  Cpu,
+  Timer,
+  TimerOff,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import type { TestConfigT } from "@/types/test.type";
+import { getDifficultyColor } from "@/lib/utils";
+import { GENRES_DATA } from "@/database/api/genreApi";
 
 type Props = {
-  fromCategoryStore: boolean
-  setIsCountDown: (isCountDown: boolean) => void
-  onStartTest: (config: TestConfigT) => void
-}
+  fromCategoryStore: boolean;
+  setIsCountDown: (isCountDown: boolean) => void;
+  onStartTest: (config: TestConfigT) => void;
+};
 
-const CountDownDialog = ({ fromCategoryStore, setIsCountDown, onStartTest }: Props) => {
-  const router = useRouter()
-  const [open, setOpen] = useState(false)
-  const [selectedConfig, setSelectedConfig] = useState<TestConfigT | null>(null)
+const CountDownDialog = ({
+  fromCategoryStore,
+  setIsCountDown,
+  onStartTest,
+}: Props) => {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const [selectedConfig, setSelectedConfig] = useState<TestConfigT | null>(
+    null
+  );
 
   useEffect(() => {
-    const pendingConfig = sessionStorage.getItem("pendingTestConfig")
+    if (!fromCategoryStore) {
+      router.back();
+      return;
+    }
+    const pendingConfig = sessionStorage.getItem("pendingTestConfig");
     if (pendingConfig) {
       try {
-        const config = JSON.parse(pendingConfig)
-        sessionStorage.removeItem("pendingTestConfig")
-        handleOpenDialog(config)
+        const config = JSON.parse(pendingConfig);
+        sessionStorage.removeItem("pendingTestConfig");
+        handleOpenDialog(config);
       } catch (error) {
-        console.error("Failed to parse pending test config:", error)
+        console.error("Failed to parse pending test config:", error);
       }
     }
-  }, [])
-
-  const getIcon = (categories: string[]) => {
-    if (categories.some((cat) => cat.includes("System") || cat.includes("Architecture"))) {
-      return <Cpu className="w-6 h-6" />
-    }
-    if (categories.some((cat) => cat.includes("Database"))) {
-      return <Database className="w-6 h-6" />
-    }
-    return <Code className="w-6 h-6" />
-  }
+  }, [fromCategoryStore]);
 
   const handleOpenDialog = (config: TestConfigT) => {
-    setSelectedConfig(config)
-    setOpen(true)
-  }
+    setSelectedConfig(config);
+    setOpen(true);
+  };
 
   const handleChoice = (countdown: boolean) => {
-    setIsCountDown(countdown)
+    setIsCountDown(countdown);
     if (selectedConfig) {
-      onStartTest(selectedConfig)
+      onStartTest(selectedConfig);
     }
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-background">
-      {!fromCategoryStore && (
+      {/* {!fromCategoryStore && (
         <section className="py-12 px-4">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">Select Your Programming Test</h1>
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">
+                Select Your Programming Test
+              </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Choose from our curated collection of programming assessments designed to test your skills
+                Choose from our curated collection of programming assessments
+                designed to test your skills
               </p>
             </div>
 
@@ -81,14 +105,19 @@ const CountDownDialog = ({ fromCategoryStore, setIsCountDown, onStartTest }: Pro
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
                         {getIcon(config.categories)}
                       </div>
-                      <Badge variant="outline" className={getDifficultyColor(config.difficulty)}>
+                      <Badge
+                        variant="outline"
+                        className={getDifficultyColor(config.difficulty)}
+                      >
                         {config.difficulty}
                       </Badge>
                     </div>
                     <CardTitle className="group-hover:text-primary transition-colors text-balance">
                       {config.title}
                     </CardTitle>
-                    <CardDescription className="text-balance">{config.description}</CardDescription>
+                    <CardDescription className="text-balance">
+                      {config.description}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -104,7 +133,11 @@ const CountDownDialog = ({ fromCategoryStore, setIsCountDown, onStartTest }: Pro
 
                     <div className="flex flex-wrap gap-2">
                       {config.categories.map((category: string) => (
-                        <Badge key={category} variant="secondary" className="text-xs">
+                        <Badge
+                          key={category}
+                          variant="secondary"
+                          className="text-xs"
+                        >
                           {category}
                         </Badge>
                       ))}
@@ -124,22 +157,24 @@ const CountDownDialog = ({ fromCategoryStore, setIsCountDown, onStartTest }: Pro
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* Countdown Choice Dialog */}
       <Dialog
         open={open}
         onOpenChange={() => {
-          setOpen(false)
+          setOpen(false);
           if (fromCategoryStore) {
-            router.back()
+            router.back();
           }
         }}
       >
         <DialogContent className="max-w-lg">
           <DialogHeader>
             <DialogTitle>Select Test Mode</DialogTitle>
-            <DialogDescription>Do you want to enable countdown mode for this test?</DialogDescription>
+            <DialogDescription>
+              Do you want to enable countdown mode for this test?
+            </DialogDescription>
           </DialogHeader>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <Card
@@ -148,7 +183,9 @@ const CountDownDialog = ({ fromCategoryStore, setIsCountDown, onStartTest }: Pro
             >
               <Timer className="w-8 h-8 mx-auto text-primary mb-2" />
               <h3 className="font-semibold">Countdown</h3>
-              <p className="text-sm text-muted-foreground">Timed challenge with countdown</p>
+              <p className="text-sm text-muted-foreground">
+                Timed challenge with countdown
+              </p>
             </Card>
 
             <Card
@@ -157,13 +194,30 @@ const CountDownDialog = ({ fromCategoryStore, setIsCountDown, onStartTest }: Pro
             >
               <TimerOff className="w-8 h-8 mx-auto text-destructive mb-2" />
               <h3 className="font-semibold">No Countdown</h3>
-              <p className="text-sm text-muted-foreground">Practice freely without a timer</p>
+              <p className="text-sm text-muted-foreground">
+                Practice freely without a timer
+              </p>
             </Card>
           </div>
         </DialogContent>
       </Dialog>
     </div>
-  )
-}
+  );
+};
 
-export default CountDownDialog
+export default CountDownDialog;
+
+
+//   const getIcon = (categories: string[]) => {
+//     if (
+//       categories.some(
+//         (cat) => cat.includes("System") || cat.includes("Architecture")
+//       )
+//     ) {
+//       return <Cpu className="w-6 h-6" />;
+//     }
+//     if (categories.some((cat) => cat.includes("Database"))) {
+//       return <Database className="w-6 h-6" />;
+//     }
+//     return <Code className="w-6 h-6" />;
+//   };

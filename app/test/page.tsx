@@ -1,19 +1,30 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { TestEngine } from "@/components/test-engine/test-engine"
-import { TestResults } from "@/components/test-engine/test-results"
-import { type TestConfigT, type TestSessionT, TestViewEnum } from "@/types/test.type"
-import useTestSessionStore from "@/store/testSessionStore"
-import CountDownDialog from "@/components/shared/dialog/CountDownDialog"
+import { useState } from "react";
+import { TestEngine } from "@/components/test-engine/test-engine";
+import { TestResults } from "@/components/test-engine/test-results";
+import {
+  type TestConfigT,
+  type TestSessionT,
+  TestViewEnum,
+} from "@/types/test.type";
+import useTestSessionStore from "@/store/testSessionStore";
+import CountDownDialog from "@/components/shared/dialog/CountDownDialog";
 
 export default function TestPage() {
-  const [currentView, setCurrentView] = useState<TestViewEnum>(TestViewEnum.SELECTION)
+  const [currentView, setCurrentView] = useState<TestViewEnum>(
+    TestViewEnum.SELECTION
+  );
 
-  const { testSessionStore, addTestSessionStore, fromCategoryStore, addFromCategoryStore } = useTestSessionStore()
+  const {
+    testSessionStore,
+    addTestSessionStore,
+    fromCategoryStore,
+    addFromCategoryStore,
+  } = useTestSessionStore();
 
-  const [testSession, setTestSession] = useState<TestSessionT | null>(null)
-  const [isCountDown, setIsCountDown] = useState<boolean>(false)
+  const [testSession, setTestSession] = useState<TestSessionT | null>(null);
+  const [isCountDown, setIsCountDown] = useState<boolean>(false);
 
   const handleStartTest = (config: TestConfigT) => {
     const session: TestSessionT = {
@@ -23,29 +34,29 @@ export default function TestPage() {
       currentQuestionIndex: 0,
       isCompleted: false,
       isCountDowning: false,
-    }
-    setTestSession(session)
-    addTestSessionStore(session)
-    setCurrentView(TestViewEnum.TEST)
-  }
+    };
+    setTestSession(session);
+    addTestSessionStore(session);
+    setCurrentView(TestViewEnum.TEST);
+  };
 
   const handleTestComplete = (session: TestSessionT) => {
-    setTestSession({ ...session, endTime: Date.now(), isCompleted: true })
-    setCurrentView(TestViewEnum.RESULTS)
-  }
+    setTestSession({ ...session, endTime: Date.now(), isCompleted: true });
+    setCurrentView(TestViewEnum.RESULTS);
+  };
 
   const handleRetakeTest = () => {
-    setTestSession(testSessionStore)
-    setCurrentView(TestViewEnum.SELECTION)
-  }
+    setTestSession(testSessionStore);
+    setCurrentView(TestViewEnum.SELECTION);
+  };
 
   const handleReset = () => {
-    setTestSession(null)
-    setCurrentView(TestViewEnum.SELECTION)
-  }
+    setTestSession(null);
+    setCurrentView(TestViewEnum.SELECTION);
+  };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen  flex flex-col justify-between">
       {currentView === TestViewEnum.SELECTION && (
         <CountDownDialog
           fromCategoryStore={fromCategoryStore}
@@ -64,8 +75,12 @@ export default function TestPage() {
       )}
 
       {currentView === TestViewEnum.RESULTS && testSession && (
-        <TestResults session={testSession} goHome={handleReset} onRetakeTest={handleRetakeTest} />
+        <TestResults
+          session={testSession}
+          goHome={handleReset}
+          onRetakeTest={handleRetakeTest}
+        />
       )}
     </div>
-  )
+  );
 }
