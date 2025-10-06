@@ -164,7 +164,7 @@ export function TestEngine({
   }
 
   return (
-    <div className="bg-background flex flex-col justify-between">
+    <div className="flex flex-col justify-between ">
       {/* Test Header */}
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
@@ -224,7 +224,7 @@ export function TestEngine({
         )}
 
       {/* Question Content */}
-      <main className="py-8 px-4">
+      <main className="py-8 px-4  flex items-center justify-center mt-20">
         <div className="container mx-auto">
           {currentQuestion.type === TestQuestionTypeEnum.MULTIPLE_CHOICE && (
             <MultipleChoiceQuestion
@@ -257,7 +257,7 @@ export function TestEngine({
       </main>
 
       {/* Navigation Footer */}
-      <footer className="border-t border-border bg-card/50 backdrop-blur-sm !h-[100px] ">
+      <footer className="absolute bottom-0 w-full flex justify-between items-center border-t border-border bg-card/50 backdrop-blur-sm ">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Button
