@@ -6,6 +6,7 @@ import { TestSelection } from "@/components/test-engine/test-selection";
 import { TestResults } from "@/components/test-engine/test-results";
 import { TestConfigT, TestSessionT, TestViewEnum } from "@/types/test.type";
 import useTestSessionStore from "@/store/testSessionStore";
+import CountDownDialog from "@/components/shared/dialog/CountDownDialog";
 
 export default function TestPage() {
   const [currentView, setCurrentView] = useState<TestViewEnum>(
@@ -18,6 +19,7 @@ export default function TestPage() {
     fromCategoryStore,
     addFromCategoryStore,
   } = useTestSessionStore();
+  const [open,setOpen] = useState(false);
   const [testSession, setTestSession] = useState<TestSessionT | null>(null);
   const [isCountDown, setIsCountDown] = useState<boolean>(false);
 
@@ -50,14 +52,28 @@ export default function TestPage() {
     setCurrentView(TestViewEnum.SELECTION);
   };
 
+  const handleOpenDialog = (config: TestConfigT) => {
+    setSelectedConfig(config);
+    setOpen(true);
+  };
+
+  const handleChoice = (countdown: boolean) => {
+    setIsCountDown(countdown);
+    if (selectedConfig) {
+      onStartTest(selectedConfig);
+    }
+    setOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {currentView === TestViewEnum.SELECTION && (
-        <TestSelection
-          onStartTest={handleStartTest}
-          setIsCountDown={setIsCountDown}
-          fromCategoryStore={fromCategoryStore}
-        />
+        <CountDownDialog  />
+        // <TestSelection
+        //   onStartTest={handleStartTest}
+        //   setIsCountDown={setIsCountDown}
+        //   fromCategoryStore={fromCategoryStore}
+        // />
       )}
 
       {currentView === TestViewEnum.TEST && testSession && (
