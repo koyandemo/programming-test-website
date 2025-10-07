@@ -121,7 +121,7 @@ export function MultipleChoiceQuestion({
 
         {!hasAnswered && !showResult && (
           <div className="flex justify-end">
-            <Button onClick={handleSubmit} disabled={!selected} size="lg">
+            <Button className="cursor-pointer" onClick={handleSubmit} disabled={!selected} size="lg">
               Submit Answer
             </Button>
           </div>

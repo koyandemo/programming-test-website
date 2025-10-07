@@ -72,7 +72,7 @@ export default function HomePage() {
             structures, and problem-solving without any signup required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8" asChild>
+            <Button size="lg" className="text-lg px-8 cursor-pointer" asChild>
               <Link href="/test">
                 Start Testing Now
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -81,7 +81,7 @@ export default function HomePage() {
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-8 bg-transparent"
+              className="text-lg px-8 bg-transparent cursor-pointer"
               asChild
             >
               <Link href="#features">Learn More</Link>
@@ -262,7 +262,7 @@ export default function HomePage() {
             Join thousands of developers who have improved their coding skills
             with our platform
           </p>
-          <Button size="lg" className="text-lg px-8" asChild>
+          <Button size="lg" className="text-lg px-8 cursor-pointer" asChild>
             <Link href="/test">
               Start Your First Test
               <ArrowRight className="ml-2 w-5 h-5" />

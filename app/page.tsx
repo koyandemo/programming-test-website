@@ -67,7 +67,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/categories">
-                <Button size="lg" className="text-lg px-8">
+                <Button size="lg" className="text-lg px-8 cursor-pointer">
                   <BookOpen className="w-5 h-5 mr-2" />
                   Browse Categories
                 </Button>
@@ -133,7 +133,7 @@ export default function HomePage() {
           {/* View All Link */}
           <div className="text-center mt-10">
             <Link href="/categories">
-              <Button variant="outline" size="lg" className="text-base px-8 bg-transparent">
+              <Button variant="outline" size="lg" className="text-base px-8 bg-transparent cursor-pointer">
                 View All Categories
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -178,7 +178,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/categories">
-              <Button size="lg" className="text-lg px-8">
+              <Button size="lg" className="text-lg px-8 cursor-pointer">
                 <Code2 className="w-5 h-5 mr-2" />
                 Explore Categories
               </Button>
@@ -190,7 +190,7 @@ export default function HomePage() {
               }}
               size="lg"
               variant="outline"
-              className="text-lg px-8 bg-transparent"
+              className="text-lg px-8 bg-transparent cursor-pointer"
             >
               Start Testing Now
             </Button>
