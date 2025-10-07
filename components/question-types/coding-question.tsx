@@ -170,11 +170,11 @@ export function CodingQuestion({ question, onSubmit, timeRemaining }: CodingQues
               className="min-h-96 font-mono text-sm bg-muted/30"
             />
             <div className="flex gap-3 mt-4">
-              <Button onClick={handleRunCode} disabled={isRunning} variant="outline">
+              <Button className="cursor-pointer" onClick={handleRunCode} disabled={isRunning} variant="outline">
                 <Play className="w-4 h-4 mr-2" />
                 {isRunning ? "Running..." : "Run Code"}
               </Button>
-              <Button onClick={handleSubmit} disabled={!code.trim()}>
+              <Button className="cursor-pointer" onClick={handleSubmit} disabled={!code.trim()}>
                 Submit Solution
               </Button>
             </div>

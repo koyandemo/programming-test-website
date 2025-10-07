@@ -107,7 +107,7 @@ export function TrueFalseQuestion({
             variant="outline"
             onClick={() => handleAnswer(true)}
             disabled={hasAnswered || showResult}
-            className={`px-12 py-6 text-lg ${getButtonStyle(true)}`}
+            className={`px-12 py-6 text-lg cursor-pointer ${getButtonStyle(true)}`}
           >
             <div className="flex items-center gap-3">
               {(showResult || hasAnswered) &&
@@ -128,7 +128,7 @@ export function TrueFalseQuestion({
             variant="outline"
             onClick={() => handleAnswer(false)}
             disabled={hasAnswered || showResult}
-            className={`px-12 py-6 text-lg ${getButtonStyle(false)}`}
+            className={`px-12 py-6 text-lg cursor-pointer ${getButtonStyle(false)}`}
           >
             <div className="flex items-center gap-3">
               {(showResult || hasAnswered) &&

@@ -43,7 +43,7 @@ export default function CategoryDetailPage() {
           <h1 className="text-2xl font-bold text-foreground mb-4">
             Category not found
           </h1>
-          <Link href="/categories">
+          <Link href="/categories" className="cursor-pointer">
             <Button>Back to Categories</Button>
           </Link>
         </div>
@@ -218,7 +218,7 @@ export default function CategoryDetailPage() {
 
                   {/* Button */}
                   <Button
-                    className="w-full"
+                    className="w-full cursor-pointer"
                     disabled={isDisabled}
                     variant={isDisabled ? "outline" : "default"}
                   >
