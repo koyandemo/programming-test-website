@@ -21,14 +21,14 @@ function convertContentlayerQuestion(doc: any): QuestionT {
     timeLimit: doc.timeLimit,
   }
 
-  if (doc.type === "MULTIPLE_CHOICE") {
+  if (doc.questionType === "MULTIPLE_CHOICE") {
     return {
       ...base,
       type: TestQuestionTypeEnum.MULTIPLE_CHOICE,
       options: doc.options || [],
       correctAnswer: doc.correctAnswer,
     }
-  } else if (doc.type === "TRUE_FALSE") {
+  } else if (doc.questionType === "TRUE_FALSE") {
     return {
       ...base,
       type: TestQuestionTypeEnum.TRUE_FALSE,
@@ -36,7 +36,7 @@ function convertContentlayerQuestion(doc: any): QuestionT {
       correctAnswer: doc.correctAnswer,
       explanation: doc.explanation || "",
     }
-  } else if (doc.type === "CODING") {
+  } else if (doc.questionType === "CODING") {
     return {
       ...base,
       type: TestQuestionTypeEnum.CODING,
