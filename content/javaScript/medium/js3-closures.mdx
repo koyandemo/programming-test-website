@@ -1,0 +1,30 @@
+---
+id: "js3"
+type: "MULTIPLE_CHOICE"
+title: "JavaScript Closures"
+description: |
+  What will be the output of the following code?
+
+  \`\`\`js
+  for (var i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 100);
+  }
+  \`\`\`
+difficulty: "MEDIUM"
+category: "JavaScript"
+options:
+  - "0 1 2"
+  - "3 3 3"
+  - "undefined undefined undefined"
+  - "Error"
+correctAnswer: 1
+---
+
+# JavaScript Closures
+
+This question explores closures and the behavior of `var` in loops with asynchronous callbacks.
+
+The key concept here is that `var` is function-scoped, not block-scoped. By the time the `setTimeout` callbacks execute, the loop has completed and `i` has the value 3.
+\`\`\`
+
+```typescript file="" isHidden
