@@ -1,6 +1,14 @@
 import type { QuestionT } from "@/types/question.type"
-import { allQuestions } from "contentlayer/generated"
 import { TestDifficultyEnum, TestQuestionTypeEnum } from "@/types/test.type"
+
+let allQuestions: any[] = []
+try {
+  const contentlayer = require("contentlayer/generated")
+  allQuestions = contentlayer.allQuestions || []
+} catch (error) {
+  console.warn("[v0] Contentlayer data not generated yet. Run 'npm run dev' to generate.")
+  allQuestions = []
+}
 
 // Function to convert Contentlayer questions to QuestionT format
 function convertContentlayerQuestion(doc: any): QuestionT {
