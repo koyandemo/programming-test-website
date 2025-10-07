@@ -9,7 +9,7 @@ export const Question = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
-    type: {
+    questionType: {
       type: "enum",
       options: ["MULTIPLE_CHOICE", "TRUE_FALSE", "CODING"],
       required: true,
