@@ -1,10 +1,12 @@
-import type { TestConfigT } from "@/types/test.type";
-import matter from "gray-matter";
-import genreData from "../mdx/genreData.mdx?raw";
+import type { TestConfigT } from "@/types/test.type"
+import { allGenres } from "contentlayer/generated"
 
-function parseMDXGenres(): TestConfigT[] {
-  const { data } = matter(genreData);
-  return data.genres || [];
-}
-
-export const GENRES_DATA: TestConfigT[] = parseMDXGenres();
+export const GENRES_DATA: TestConfigT[] = allGenres.map((genre) => ({
+  id: genre.id,
+  title: genre.title,
+  description: genre.description,
+  duration: genre.duration,
+  questionCount: genre.questionCount,
+  difficulty: genre.difficulty as any,
+  categories: genre.categories,
+}))

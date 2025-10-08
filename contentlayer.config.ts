@@ -2,7 +2,7 @@ import { defineDocumentType, makeSource } from "contentlayer/source-files"
 
 export const Question = defineDocumentType(() => ({
   name: "Question",
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: `**/!(category|genre)/*.mdx`,
   contentType: "mdx",
   fields: {
     id: {
@@ -81,7 +81,83 @@ export const Question = defineDocumentType(() => ({
   },
 }))
 
+export const Category = defineDocumentType(() => ({
+  name: "Category",
+  filePathPattern: `category/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    id: {
+      type: "string",
+      required: true,
+    },
+    name: {
+      type: "string",
+      required: true,
+    },
+    slug: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: true,
+    },
+    icon: {
+      type: "string",
+      required: true,
+    },
+    color: {
+      type: "string",
+      required: true,
+    },
+  },
+  computedFields: {
+    url: {
+      type: "string",
+      resolve: (doc) => `/categories/${doc.slug}`,
+    },
+  },
+}))
+
+export const Genre = defineDocumentType(() => ({
+  name: "Genre",
+  filePathPattern: `genre/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    id: {
+      type: "string",
+      required: true,
+    },
+    title: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: true,
+    },
+    duration: {
+      type: "number",
+      required: true,
+    },
+    questionCount: {
+      type: "number",
+      required: true,
+    },
+    difficulty: {
+      type: "enum",
+      options: ["EASY", "MEDIUM", "HARD", "MIXED"],
+      required: true,
+    },
+    categories: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
+    },
+  },
+}))
+
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Question],
+  documentTypes: [Question, Category, Genre],
 })
