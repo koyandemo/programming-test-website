@@ -1,5 +1,13 @@
 import type { TestConfigT } from "@/types/test.type"
-import { allGenres } from "contentlayer/generated"
+
+let allGenres: any[] = []
+try {
+  const contentlayer = require("contentlayer/generated")
+  allGenres = contentlayer.allGenres || []
+} catch (error) {
+  console.warn("[v0] Contentlayer genres not generated yet. Run 'npm run dev' to generate.")
+  allGenres = []
+}
 
 export const GENRES_DATA: TestConfigT[] = allGenres.map((genre) => ({
   id: genre.id,

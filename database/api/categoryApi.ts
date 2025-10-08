@@ -1,6 +1,14 @@
 import type { CategoryT } from "@/types/category.type"
-import { allCategories } from "contentlayer/generated"
 import { getQuestionStats } from "./questionApi"
+
+let allCategories: any[] = []
+try {
+  const contentlayer = require("contentlayer/generated")
+  allCategories = contentlayer.allCategories || []
+} catch (error) {
+  console.warn("[v0] Contentlayer categories not generated yet. Run 'npm run dev' to generate.")
+  allCategories = []
+}
 
 export const CATEGORIES_DATA: CategoryT[] = allCategories.map((cat) => ({
   id: cat.id,
