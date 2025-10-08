@@ -2,7 +2,7 @@ import { defineDocumentType, makeSource } from "contentlayer/source-files"
 
 export const Question = defineDocumentType(() => ({
   name: "Question",
-  filePathPattern: `javaScript/**/*.mdx`,
+  filePathPattern: `**/*.mdx`,
   contentType: "mdx",
   fields: {
     id: {

@@ -1,0 +1,21 @@
+---
+id: "db5"
+questionType: "MULTIPLE_CHOICE"
+title: "Database Indexing Strategy"
+description: "When would adding an index to a database column potentially decrease performance?"
+difficulty: "HARD"
+category: "Database"
+options:
+  - "On columns used in WHERE clauses"
+  - "On columns with high cardinality"
+  - "On columns frequently used in INSERT/UPDATE operations"
+  - "On primary key columns"
+correctAnswer: 2
+---
+
+# Database Indexing Strategy
+
+This question tests advanced understanding of database indexing trade-offs.
+
+While indexes speed up SELECT queries, they can slow down INSERT, UPDATE, and DELETE operations because the index must be updated with each modification. Tables with frequent write operations may suffer performance degradation from too many indexes.
+\`\`\`

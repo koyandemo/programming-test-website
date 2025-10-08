@@ -1,0 +1,21 @@
+---
+id: "sd4"
+questionType: "MULTIPLE_CHOICE"
+title: "Database Replication"
+description: "In a master-slave database replication setup, what is the primary role of slave databases?"
+difficulty: "MEDIUM"
+category: "System Design"
+options:
+  - "To handle all write operations"
+  - "To handle read operations and provide redundancy"
+  - "To replace the master database"
+  - "To store backup data only"
+correctAnswer: 1
+---
+
+# Database Replication
+
+Database replication is crucial for scalability and reliability.
+
+In master-slave replication, slave databases primarily handle read operations, reducing load on the master. They also provide redundancy and can be promoted to master if the primary fails.
+\`\`\`

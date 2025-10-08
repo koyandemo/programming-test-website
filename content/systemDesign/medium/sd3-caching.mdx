@@ -1,0 +1,21 @@
+---
+id: "sd3"
+questionType: "MULTIPLE_CHOICE"
+title: "Caching Strategies"
+description: "Which caching strategy removes the least recently used item when the cache is full?"
+difficulty: "MEDIUM"
+category: "System Design"
+options:
+  - "FIFO (First In First Out)"
+  - "LRU (Least Recently Used)"
+  - "LFU (Least Frequently Used)"
+  - "Random Replacement"
+correctAnswer: 1
+---
+
+# Caching Strategies
+
+Understanding cache eviction policies is important for system performance.
+
+LRU (Least Recently Used) removes the item that hasn't been accessed for the longest time when the cache reaches capacity. This strategy assumes recently accessed items are more likely to be accessed again.
+\`\`\`

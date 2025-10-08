@@ -1,0 +1,21 @@
+---
+id: "sd5"
+questionType: "MULTIPLE_CHOICE"
+title: "CAP Theorem"
+description: "According to the CAP theorem, which two properties can a distributed system guarantee simultaneously during a network partition?"
+difficulty: "HARD"
+category: "System Design"
+options:
+  - "Consistency and Availability"
+  - "Consistency and Partition Tolerance"
+  - "Availability and Partition Tolerance"
+  - "All three can be guaranteed"
+correctAnswer: 2
+---
+
+# CAP Theorem
+
+The CAP theorem is fundamental to understanding distributed systems trade-offs.
+
+During a network partition, a distributed system must choose between Consistency and Availability. Partition Tolerance is mandatory in distributed systems. You can have CP (Consistency + Partition Tolerance) or AP (Availability + Partition Tolerance), but not all three simultaneously.
+\`\`\`
