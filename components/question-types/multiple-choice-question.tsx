@@ -34,6 +34,7 @@ export function MultipleChoiceQuestion({
   useEffect(() => {
     if (submitRef) {
       submitRef.current = () => {
+        console.log("[v0] Submit ref called", { selected, hasAnswered, questionId: question.id })
         if (!selected) {
           return false // Cannot proceed without selection
         }
@@ -53,6 +54,7 @@ export function MultipleChoiceQuestion({
   const handleSubmit = () => {
     if (!selected) return
 
+    console.log("[v0] handleSubmit called in multiple-choice", { selected, questionId: question.id })
     const selectedIndex = Number.parseInt(selected)
     const isCorrect = selectedIndex === question.correctAnswer
     setHasAnswered(true)

@@ -62,6 +62,7 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
   }, [isCountDown, showTimeWarning, handleTimeUp])
 
   const handleAnswer = (questionId: string, answer: any, isCorrect: boolean) => {
+    console.log("[v0] handleAnswer called", { questionId, answer, isCorrect })
     const currentTime = Date.now()
     const questionStartTime = currentSession.startTime + currentSession.currentQuestionIndex * 60000 // Rough estimate
     const timeSpent = Math.floor((currentTime - questionStartTime) / 1000)
@@ -82,6 +83,8 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
     } else {
       updatedAnswers.push(newAnswer)
     }
+
+    console.log("[v0] Updated answers array", { updatedAnswers, length: updatedAnswers.length })
 
     setCurrentSession((prev) => ({
       ...prev,
@@ -116,16 +119,24 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
   }
 
   const handleSubmitTest = () => {
+    console.log("[v0] handleSubmitTest called")
+    console.log("[v0] Current session answers before submit", currentSession.answers)
+
     if (questionSubmitRef.current) {
-      questionSubmitRef.current() // This will submit if there's an answer
+      const submitted = questionSubmitRef.current()
+      console.log("[v0] Question submit ref returned", submitted)
     }
 
-    const completedSession = {
-      ...currentSession,
-      isCompleted: true,
-      endTime: Date.now(),
-    }
-    onComplete(completedSession)
+    setTimeout(() => {
+      console.log("[v0] Current session answers after timeout", currentSession.answers)
+      const completedSession = {
+        ...currentSession,
+        isCompleted: true,
+        endTime: Date.now(),
+      }
+      console.log("[v0] Completing test with answers", completedSession.answers)
+      onComplete(completedSession)
+    }, 100)
   }
 
   const currentQuestion = questions[currentSession.currentQuestionIndex]
