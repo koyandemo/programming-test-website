@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
@@ -25,6 +25,7 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
     getRandomQuestions(session.config.questionCount, session.config.categories, session.config.difficulty),
   )
   const [showTimeWarning, setShowTimeWarning] = useState(false)
+  const questionSubmitRef = useRef<(() => boolean) | null>(null)
 
   useEffect(() => {
     addFromCategoryStore(false)
@@ -39,7 +40,6 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
     onComplete(completedSession)
   }, [currentSession, onComplete])
 
-  // Timer effect (only run if countdown is enabled)
   useEffect(() => {
     if (!isCountDown) return
 
@@ -50,7 +50,6 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
           return 0
         }
 
-        // Show warning when 5 minutes remaining
         if (prev === 300 && !showTimeWarning) {
           setShowTimeWarning(true)
         }
@@ -91,6 +90,14 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
   }
 
   const handleNext = () => {
+    if (questionSubmitRef.current) {
+      const canProceed = questionSubmitRef.current()
+      if (!canProceed) {
+        alert("Please select an answer before proceeding to the next question.")
+        return
+      }
+    }
+
     if (currentSession.currentQuestionIndex < questions.length - 1) {
       setCurrentSession((prev) => ({
         ...prev,
@@ -134,7 +141,6 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
 
   return (
     <div className="flex flex-col justify-between ">
-      {/* Test Header */}
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -152,7 +158,6 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
                 </Badge>
               </div>
 
-              {/* Show timer only if countdown mode is enabled */}
               {isCountDown && (
                 <div
                   className={`flex items-center gap-2 ${
@@ -172,7 +177,6 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
         </div>
       </header>
 
-      {/* Time Warning (only in countdown mode) */}
       {isCountDown && showTimeWarning && timeRemaining <= 300 && timeRemaining > 0 && (
         <div className="bg-red-500/10 border-b border-red-500/20 px-4 py-3">
           <div className="container mx-auto flex items-center gap-2 text-red-400">
@@ -182,8 +186,7 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
         </div>
       )}
 
-      {/* Question Content */}
-      <main className="py-8 px-4  flex items-center justify-center mt-20">
+      <main className="py-8 px-4 flex items-center justify-center mt-20">
         <div className="container mx-auto">
           {currentQuestion.type === TestQuestionTypeEnum.MULTIPLE_CHOICE && (
             <MultipleChoiceQuestion
@@ -192,6 +195,7 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
               onAnswer={handleAnswer}
               selectedAnswer={currentAnswer?.answer}
               timeRemaining={isCountDown ? timeRemaining : undefined}
+              submitRef={questionSubmitRef}
             />
           )}
 
@@ -203,6 +207,7 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
                 handleAnswer(questionId, { code, language }, true) // Mock evaluation
               }}
               timeRemaining={isCountDown ? timeRemaining : undefined}
+              submitRef={questionSubmitRef}
             />
           )}
 
@@ -213,12 +218,12 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
               onAnswer={handleAnswer}
               selectedAnswer={currentAnswer?.answer}
               timeRemaining={isCountDown ? timeRemaining : undefined}
+              submitRef={questionSubmitRef}
             />
           )}
         </div>
       </main>
 
-      {/* Navigation Footer */}
       <footer className="absolute bottom-0 w-full flex justify-between items-center border-t border-border bg-card/50 backdrop-blur-sm ">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">

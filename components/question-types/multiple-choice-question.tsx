@@ -1,13 +1,15 @@
 "use client"
 
-import { useState } from "react"
+import type React from "react"
+
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, XCircle, Clock } from "lucide-react"
-import { MultipleChoiceQuestionT } from "@/types/question.type"
+import type { MultipleChoiceQuestionT } from "@/types/question.type"
 
 interface MultipleChoiceQuestionProps {
   question: MultipleChoiceQuestionT
@@ -15,6 +17,7 @@ interface MultipleChoiceQuestionProps {
   showResult?: boolean
   selectedAnswer?: number
   timeRemaining?: number
+  submitRef?: React.MutableRefObject<(() => boolean) | null>
 }
 
 export function MultipleChoiceQuestion({
@@ -23,9 +26,29 @@ export function MultipleChoiceQuestion({
   showResult = false,
   selectedAnswer,
   timeRemaining,
+  submitRef,
 }: MultipleChoiceQuestionProps) {
   const [selected, setSelected] = useState<string>("")
   const [hasAnswered, setHasAnswered] = useState(false)
+
+  useEffect(() => {
+    if (submitRef) {
+      submitRef.current = () => {
+        if (!selected) {
+          return false // Cannot proceed without selection
+        }
+        if (!hasAnswered) {
+          handleSubmit()
+        }
+        return true // Can proceed
+      }
+    }
+    return () => {
+      if (submitRef) {
+        submitRef.current = null
+      }
+    }
+  }, [selected, hasAnswered, submitRef])
 
   const handleSubmit = () => {
     if (!selected) return
@@ -122,7 +145,7 @@ export function MultipleChoiceQuestion({
         {!hasAnswered && !showResult && (
           <div className="flex justify-end">
             <Button className="cursor-pointer" onClick={handleSubmit} disabled={!selected} size="lg">
-              Submit Answer
+              Check Answer
             </Button>
           </div>
         )}

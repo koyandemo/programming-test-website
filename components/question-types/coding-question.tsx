@@ -1,6 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import type React from "react"
+
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -8,18 +10,20 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Clock, Play, CheckCircle, XCircle } from "lucide-react"
-import { CodingQuestionT } from "@/types/question.type"
+import type { CodingQuestionT } from "@/types/question.type"
 
 interface CodingQuestionProps {
   question: CodingQuestionT
   onSubmit: (questionId: string, code: string, language: string) => void
   timeRemaining?: number
+  submitRef?: React.MutableRefObject<(() => boolean) | null>
 }
 
-export function CodingQuestion({ question, onSubmit, timeRemaining }: CodingQuestionProps) {
+export function CodingQuestion({ question, onSubmit, timeRemaining, submitRef }: CodingQuestionProps) {
   const [selectedLanguage, setSelectedLanguage] = useState("javascript")
   const [code, setCode] = useState(question.starterCode?.[selectedLanguage] || "")
   const [isRunning, setIsRunning] = useState(false)
+  const [hasSubmitted, setHasSubmitted] = useState(false)
   const [testResults, setTestResults] = useState<
     Array<{ passed: boolean; input: string; expected: string; actual: string }>
   >([])
@@ -30,6 +34,25 @@ export function CodingQuestion({ question, onSubmit, timeRemaining }: CodingQues
     { value: "java", label: "Java" },
     { value: "cpp", label: "C++" },
   ]
+
+  useEffect(() => {
+    if (submitRef) {
+      submitRef.current = () => {
+        if (!code.trim()) {
+          return false // Cannot proceed without code
+        }
+        if (!hasSubmitted) {
+          handleSubmit()
+        }
+        return true // Can proceed
+      }
+    }
+    return () => {
+      if (submitRef) {
+        submitRef.current = null
+      }
+    }
+  }, [code, hasSubmitted, submitRef])
 
   const handleLanguageChange = (language: string) => {
     setSelectedLanguage(language)
@@ -52,6 +75,8 @@ export function CodingQuestion({ question, onSubmit, timeRemaining }: CodingQues
   }
 
   const handleSubmit = () => {
+    if (!code.trim() || hasSubmitted) return
+    setHasSubmitted(true)
     onSubmit(question.id, code, selectedLanguage)
   }
 
@@ -168,14 +193,20 @@ export function CodingQuestion({ question, onSubmit, timeRemaining }: CodingQues
               onChange={(e) => setCode(e.target.value)}
               placeholder={`Write your ${languages.find((l) => l.value === selectedLanguage)?.label} code here...`}
               className="min-h-96 font-mono text-sm bg-muted/30"
+              disabled={hasSubmitted}
             />
             <div className="flex gap-3 mt-4">
-              <Button className="cursor-pointer" onClick={handleRunCode} disabled={isRunning} variant="outline">
+              <Button
+                className="cursor-pointer bg-transparent"
+                onClick={handleRunCode}
+                disabled={isRunning || hasSubmitted}
+                variant="outline"
+              >
                 <Play className="w-4 h-4 mr-2" />
                 {isRunning ? "Running..." : "Run Code"}
               </Button>
-              <Button className="cursor-pointer" onClick={handleSubmit} disabled={!code.trim()}>
-                Submit Solution
+              <Button className="cursor-pointer" onClick={handleSubmit} disabled={!code.trim() || hasSubmitted}>
+                Check Answer
               </Button>
             </div>
           </CardContent>
