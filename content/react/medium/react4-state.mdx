@@ -1,0 +1,21 @@
+---
+id: "react4"
+questionType: "MULTIPLE_CHOICE"
+title: "React State Management"
+description: "What happens when you call setState in React?"
+difficulty: "MEDIUM"
+category: "React"
+options:
+  - "The component re-renders immediately"
+  - "React schedules a re-render and may batch multiple updates"
+  - "The state changes but the component doesn't re-render"
+  - "An error is thrown"
+correctAnswer: 1
+---
+
+# React State Management
+
+Understanding how React handles state updates is crucial for performance.
+
+When you call setState, React schedules a re-render rather than updating immediately. React may batch multiple setState calls together for performance optimization.
+\`\`\`
