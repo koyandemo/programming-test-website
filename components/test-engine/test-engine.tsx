@@ -116,6 +116,10 @@ export function TestEngine({ session, isCountDown, onComplete, addFromCategorySt
   }
 
   const handleSubmitTest = () => {
+    if (questionSubmitRef.current) {
+      questionSubmitRef.current() // This will submit if there's an answer
+    }
+
     const completedSession = {
       ...currentSession,
       isCompleted: true,
