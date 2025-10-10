@@ -18,6 +18,7 @@ import {
   Shuffle,
   Zap,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useMemo } from "react";
@@ -34,7 +35,6 @@ export default function CategoryDetailPage() {
     if (!category) return [];
     return getQuestionsByCategory(category.name);
   }, [category]);
-
 
   if (!category) {
     return (
@@ -135,11 +135,29 @@ export default function CategoryDetailPage() {
 
           <div className="flex items-start gap-6">
             {/* Category Icon */}
-            <div
+            {/* <div
               className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center text-4xl shadow-lg flex-shrink-0`}
             >
               {category.icon}
-            </div>
+            </div> */}
+            {category.icon.includes("images") ? (
+              <div
+                className={`w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shadow-lg flex-shrink-0`}
+              >
+                <Image
+                  width={80}
+                  height={80}
+                  alt="image"
+                  src={`.${category.icon}`}
+                />
+              </div>
+            ) : (
+              <div
+                className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center text-4xl shadow-lg flex-shrink-0`}
+              >
+                {category.icon}
+              </div>
+            )}
 
             {/* Category Info */}
             <div className="flex-grow">
