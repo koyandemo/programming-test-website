@@ -1,0 +1,19 @@
+---
+id: "q_ch2n5k8m"
+questionType: "MULTIPLE_CHOICE"
+title: "ConcurrentHashMap Internals"
+description: "How does ConcurrentHashMap achieve thread-safety without locking the entire map?"
+difficulty: "HARD"
+category: "Java"
+options:
+  - "Using synchronized methods"
+  - "Using segment-level locking (Java 7) or CAS operations (Java 8+)"
+  - "Using volatile variables only"
+  - "Using ReadWriteLock"
+correctAnswer: 1
+---
+
+# ConcurrentHashMap Internals
+
+Java 7 used segment-level locking (16 segments by default). Java 8+ uses CAS (Compare-And-Swap) operations and synchronized blocks on individual nodes, allowing much higher concurrency. This fine-grained locking strategy enables multiple threads to read/write different parts simultaneously.
+\`\`\`

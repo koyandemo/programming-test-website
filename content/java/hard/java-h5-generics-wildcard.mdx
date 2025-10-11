@@ -1,0 +1,19 @@
+---
+id: "q_gw5n7k3m"
+questionType: "MULTIPLE_CHOICE"
+title: "Generics Wildcard Bounds"
+description: "What is the difference between List<? extends T> and List<? super T>?"
+difficulty: "HARD"
+category: "Java"
+options:
+  - "extends allows reading, super allows writing"
+  - "extends allows writing, super allows reading"
+  - "Both allow reading and writing"
+  - "Neither allows reading or writing"
+correctAnswer: 0
+---
+
+# Generics Wildcard Bounds
+
+List<? extends T> (upper bound) allows safe reading as T but not writing (except null). List<? super T> (lower bound) allows safe writing of T but reading only as Object. This is the PECS principle: Producer Extends, Consumer Super.
+\`\`\`

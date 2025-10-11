@@ -1,0 +1,19 @@
+---
+id: "q_gc7n2k5m"
+questionType: "MULTIPLE_CHOICE"
+title: "Garbage Collection Algorithm"
+description: "Which garbage collection algorithm uses the concept of 'survivor spaces' to reduce fragmentation?"
+difficulty: "HARD"
+category: "Java"
+options:
+  - "Serial GC"
+  - "Parallel GC"
+  - "G1 GC"
+  - "All of the above"
+correctAnswer: 3
+---
+
+# Garbage Collection Algorithm
+
+All modern Java garbage collectors (Serial, Parallel, G1, ZGC) use survivor spaces as part of generational garbage collection. The young generation is divided into Eden and two survivor spaces (S0 and S1) to reduce memory fragmentation and improve collection efficiency.
+\`\`\`

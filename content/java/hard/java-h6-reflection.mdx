@@ -1,0 +1,15 @@
+---
+id: "q_rf8k4m9n"
+questionType: "TRUE_FALSE"
+title: "Reflection Performance"
+statement: "Using Java Reflection API has the same performance characteristics as direct method invocation."
+difficulty: "HARD"
+category: "Java"
+correctAnswer: false
+explanation: "Reflection is significantly slower than direct method invocation because it involves runtime type checking, security checks, and bypasses JIT compiler optimizations. It should be used sparingly in performance-critical code."
+---
+
+# Reflection Performance
+
+Reflection incurs overhead from runtime type resolution, security manager checks, and inability to benefit from JIT optimizations like inlining. Modern JVMs have improved reflection performance, but it's still slower than direct calls.
+\`\`\`

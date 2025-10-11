@@ -1,0 +1,19 @@
+---
+id: "q_sp4n8k2m"
+questionType: "MULTIPLE_CHOICE"
+title: "Parallel Streams"
+description: "What is the default ForkJoinPool size used by parallel streams?"
+difficulty: "HARD"
+category: "Java"
+options:
+  - "Number of CPU cores"
+  - "Number of CPU cores - 1"
+  - "Fixed size of 10"
+  - "Dynamically adjusted based on workload"
+correctAnswer: 1
+---
+
+# Parallel Streams
+
+Parallel streams use the common ForkJoinPool with a default parallelism level of Runtime.getRuntime().availableProcessors() - 1. This reserves one thread for the main application. You can customize this with system property java.util.concurrent.ForkJoinPool.common.parallelism.
+\`\`\`
