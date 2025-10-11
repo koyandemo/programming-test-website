@@ -1,0 +1,21 @@
+---
+id: "q_8Vn3Jk6W"
+questionType: "MULTIPLE_CHOICE"
+title: "Zip Function"
+description: "What is the result of list(zip([1, 2], ['a', 'b', 'c']))?"
+difficulty: "MEDIUM"
+category: "Python"
+options:
+  - "[(1, 'a'), (2, 'b'), (3, 'c')]"
+  - "[(1, 'a'), (2, 'b')]"
+  - "[(1, 2), ('a', 'b', 'c')]"
+  - "Error: lists must be same length"
+correctAnswer: 1
+---
+
+# Zip Function
+
+Understanding how zip() combines iterables.
+
+The `zip()` function combines multiple iterables element-wise, stopping when the shortest iterable is exhausted. Since [1, 2] has only 2 elements, zip stops after pairing the first 2 elements, resulting in [(1, 'a'), (2, 'b')].
+\`\`\`
