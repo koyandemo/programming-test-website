@@ -22,6 +22,10 @@ export const Question = defineDocumentType(() => ({
       type: "string",
       required: false,
     },
+    genre:{
+      type:"string",
+      required:false
+    },
     difficulty: {
       type: "enum",
       options: ["EASY", "MEDIUM", "HARD"],
