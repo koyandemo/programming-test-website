@@ -1,0 +1,15 @@
+---
+id: "q_r8b2c6m4"
+questionType: "TRUE_FALSE"
+title: "Event Loop Execution"
+statement: "In JavaScript, setTimeout with 0 delay will execute immediately before any other code."
+difficulty: "MEDIUM"
+category: "JavaScript"
+correctAnswer: false
+explanation: "setTimeout with 0 delay places the callback in the task queue, which executes after the current call stack is empty and microtasks are processed."
+---
+
+# Event Loop Execution
+
+Even with a 0ms delay, `setTimeout` callbacks are placed in the macrotask queue and execute after the current synchronous code and all microtasks.
+\`\`\`

@@ -1,0 +1,19 @@
+---
+id: "q_t5j9m3n8"
+questionType: "MULTIPLE_CHOICE"
+title: "Promise Chaining"
+description: "What happens if you don't return a value in a .then() handler?"
+difficulty: "MEDIUM"
+category: "JavaScript"
+options:
+  - "The promise chain breaks"
+  - "The next .then() receives undefined"
+  - "An error is thrown"
+  - "The previous value is passed forward"
+correctAnswer: 1
+---
+
+# Promise Chaining
+
+If a `.then()` handler doesn't return a value, the next `.then()` in the chain receives `undefined` as its argument.
+\`\`\`

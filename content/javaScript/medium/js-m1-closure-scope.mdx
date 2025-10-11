@@ -1,0 +1,19 @@
+---
+id: "q_p8k3m6r1"
+questionType: "MULTIPLE_CHOICE"
+title: "Closure and Scope"
+description: "What will be logged when this code runs? function outer() { let x = 10; return function inner() { console.log(x); }; } const fn = outer(); fn();"
+difficulty: "MEDIUM"
+category: "JavaScript"
+options:
+  - "undefined"
+  - "10"
+  - "ReferenceError"
+  - "null"
+correctAnswer: 1
+---
+
+# Closure and Scope
+
+The inner function forms a closure over the variable `x` from the outer function's scope, maintaining access to it even after outer() has returned.
+\`\`\`
