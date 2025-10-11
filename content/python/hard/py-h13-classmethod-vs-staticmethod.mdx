@@ -1,0 +1,19 @@
+---
+id: "q_3Jm8Qp5L"
+questionType: "MULTIPLE_CHOICE"
+title: "Classmethod vs Staticmethod"
+description: "What is the key difference between @classmethod and @staticmethod?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "Classmethods are faster"
+  - "Classmethods receive the class as first argument, staticmethods don't receive any implicit argument"
+  - "Staticmethods can access instance variables"
+  - "There is no difference"
+correctAnswer: 1
+---
+
+# Classmethod vs Staticmethod
+
+`@classmethod` receives the class (cls) as the first argument and can access/modify class state. `@staticmethod` receives no implicit first argument and behaves like a regular function but belongs to the class namespace. Classmethods are useful for alternative constructors.
+\`\`\`

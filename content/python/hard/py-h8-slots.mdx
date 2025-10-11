@@ -1,0 +1,19 @@
+---
+id: "q_2Hk5Wn7Q"
+questionType: "MULTIPLE_CHOICE"
+title: "Python __slots__"
+description: "What is the primary benefit of using __slots__ in a Python class?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "Faster method calls"
+  - "Reduced memory usage by preventing __dict__ creation"
+  - "Better inheritance support"
+  - "Automatic type checking"
+correctAnswer: 1
+---
+
+# Python __slots__
+
+Using `__slots__` prevents the creation of `__dict__` for each instance, storing attributes in a fixed-size array instead. This significantly reduces memory usage for classes with many instances, though it prevents dynamic attribute addition.
+\`\`\`

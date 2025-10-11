@@ -1,0 +1,15 @@
+---
+id: "q_8Kn3Rt5S"
+questionType: "TRUE_FALSE"
+title: "Import Time Side Effects"
+statement: "Code at module level in Python is executed when the module is first imported, which can cause side effects and impact import performance."
+difficulty: "HARD"
+category: "Python"
+correctAnswer: true
+explanation: "Module-level code runs during import, which can cause side effects, slow imports, and create circular import issues. Best practice is to minimize module-level code and use if __name__ == '__main__' guards for script-specific code."
+---
+
+# Import Time Side Effects
+
+Understanding import-time execution is crucial for writing maintainable Python modules.
+\`\`\`

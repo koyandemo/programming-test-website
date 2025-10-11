@@ -1,0 +1,15 @@
+---
+id: "q_3Rt6Vn8L"
+questionType: "TRUE_FALSE"
+title: "Method Descriptors"
+statement: "Regular instance methods in Python are implemented as descriptors, which is why they automatically receive 'self' as the first argument."
+difficulty: "HARD"
+category: "Python"
+correctAnswer: true
+explanation: "Functions are descriptors that implement __get__(). When accessed as an attribute, __get__() returns a bound method object that automatically passes the instance as the first argument. This is how 'self' is automatically provided to methods."
+---
+
+# Method Descriptors
+
+Understanding that methods are descriptors explains Python's method binding mechanism.
+\`\`\`

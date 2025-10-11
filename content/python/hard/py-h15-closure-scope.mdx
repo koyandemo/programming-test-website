@@ -1,0 +1,19 @@
+---
+id: "q_4Kp6Lm3N"
+questionType: "MULTIPLE_CHOICE"
+title: "Closure Variable Scope"
+description: "What keyword is needed to modify a variable from an enclosing scope within a nested function?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "global"
+  - "nonlocal"
+  - "outer"
+  - "closure"
+correctAnswer: 1
+---
+
+# Closure Variable Scope
+
+The `nonlocal` keyword allows a nested function to modify variables from the enclosing (but not global) scope. Without it, assignment creates a new local variable. `global` is for module-level variables, while `nonlocal` is for enclosing function scopes.
+\`\`\`

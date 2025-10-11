@@ -1,0 +1,19 @@
+---
+id: "q_3Lm8Kp4Q"
+questionType: "MULTIPLE_CHOICE"
+title: "Generic Types"
+description: "How do you create a generic class that can work with any type in Python's typing system?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "Inherit from Generic[T]"
+  - "Use the @generic decorator"
+  - "Add __generic__ attribute"
+  - "Generics are not supported"
+correctAnswer: 0
+---
+
+# Generic Types
+
+Generic classes inherit from `Generic[T]` where T is a TypeVar. This allows creating reusable, type-safe containers and functions that work with any type while maintaining type checking. Example: `class Stack(Generic[T])`.
+\`\`\`

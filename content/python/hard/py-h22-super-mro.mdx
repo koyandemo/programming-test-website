@@ -1,0 +1,15 @@
+---
+id: "q_7Kn4Rt2P"
+questionType: "TRUE_FALSE"
+title: "Super and MRO"
+statement: "The super() function in Python follows the Method Resolution Order (MRO) to find the next class in the inheritance chain, not necessarily the direct parent class."
+difficulty: "HARD"
+category: "Python"
+correctAnswer: true
+explanation: "super() doesn't simply call the parent class method; it follows the MRO to find the next class. This is crucial in multiple inheritance where the 'next' class might not be the direct parent, ensuring all classes in the hierarchy are called exactly once."
+---
+
+# Super and MRO
+
+Understanding super() and MRO is essential for correctly implementing cooperative multiple inheritance.
+\`\`\`

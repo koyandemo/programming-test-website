@@ -1,0 +1,19 @@
+---
+id: "q_1Xp6Jm4R"
+questionType: "MULTIPLE_CHOICE"
+title: "Decorator with Arguments"
+description: "How many levels of nested functions are needed to create a decorator that accepts arguments?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "One level"
+  - "Two levels"
+  - "Three levels"
+  - "Four levels"
+correctAnswer: 2
+---
+
+# Decorator with Arguments
+
+A decorator with arguments requires three levels: the outermost function accepts the decorator arguments, returns a decorator function that accepts the target function, which returns a wrapper function that accepts the function's arguments. This creates the pattern: `decorator_factory(args) -> decorator -> wrapper`.
+\`\`\`

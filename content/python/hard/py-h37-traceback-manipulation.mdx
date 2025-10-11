@@ -1,0 +1,19 @@
+---
+id: "q_5Kq2Rt7M"
+questionType: "MULTIPLE_CHOICE"
+title: "Traceback Manipulation"
+description: "Which method allows you to raise an exception with a modified traceback?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "raise Exception.with_traceback()"
+  - "raise Exception from cause"
+  - "Both 'raise exception.with_traceback(tb)' and 'raise from'"
+  - "Tracebacks cannot be modified"
+correctAnswer: 2
+---
+
+# Traceback Manipulation
+
+`exception.with_traceback(tb)` allows raising an exception with a custom traceback. `raise from` chains exceptions, preserving context. These features enable better error handling and debugging in complex applications.
+\`\`\`

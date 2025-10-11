@@ -1,0 +1,15 @@
+---
+id: "q_4Kn9Rt3S"
+questionType: "TRUE_FALSE"
+title: "Cyclic Garbage Collection"
+statement: "Python's cyclic garbage collector can detect and collect reference cycles, but only for objects that don't have __del__() methods."
+difficulty: "HARD"
+category: "Python"
+correctAnswer: false
+explanation: "Modern Python (3.4+) can collect cycles even with __del__() methods. The gc module uses a generational garbage collector that can detect and break reference cycles. However, __del__() can still complicate collection in some cases."
+---
+
+# Cyclic Garbage Collection
+
+Python's garbage collector handles reference cycles that reference counting alone cannot resolve.
+\`\`\`

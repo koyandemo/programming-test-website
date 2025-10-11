@@ -1,0 +1,19 @@
+---
+id: "q_5Wp2Km7T"
+questionType: "MULTIPLE_CHOICE"
+title: "Property Decorator"
+description: "What does the @property decorator actually return?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "A function"
+  - "A descriptor object"
+  - "A class method"
+  - "A static method"
+correctAnswer: 1
+---
+
+# Property Decorator
+
+The `@property` decorator returns a descriptor object that implements `__get__()`, `__set__()`, and `__delete__()` methods. This allows method calls to be accessed like attributes while maintaining encapsulation and enabling computed properties.
+\`\`\`

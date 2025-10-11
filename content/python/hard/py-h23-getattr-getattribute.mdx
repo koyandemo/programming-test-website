@@ -1,0 +1,19 @@
+---
+id: "q_2Pm8Wn5Q"
+questionType: "MULTIPLE_CHOICE"
+title: "__getattr__ vs __getattribute__"
+description: "When is __getattr__() called compared to __getattribute__()?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "They are called at the same time"
+  - "__getattr__() is called only when the attribute is not found, __getattribute__() is called for every attribute access"
+  - "__getattribute__() is called only for missing attributes"
+  - "They are identical methods"
+correctAnswer: 1
+---
+
+# __getattr__ vs __getattribute__
+
+`__getattribute__()` is called for every attribute access and can intercept all lookups. `__getattr__()` is only called as a fallback when the attribute isn't found through normal means. Overriding `__getattribute__()` requires care to avoid infinite recursion.
+\`\`\`

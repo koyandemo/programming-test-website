@@ -1,0 +1,19 @@
+---
+id: "q_6Vn3Rt9Q"
+questionType: "MULTIPLE_CHOICE"
+title: "Future Annotations"
+description: "What does 'from __future__ import annotations' do?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "Enables runtime type checking"
+  - "Makes all annotations strings (postponed evaluation)"
+  - "Removes all type hints"
+  - "Converts annotations to comments"
+correctAnswer: 1
+---
+
+# Future Annotations
+
+PEP 563 postpones annotation evaluation by storing them as strings. This solves forward reference issues, reduces startup time, and allows annotations that would otherwise cause NameErrors. It becomes the default in Python 3.11+.
+\`\`\`

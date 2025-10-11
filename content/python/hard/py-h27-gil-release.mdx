@@ -1,0 +1,19 @@
+---
+id: "q_1Kq7Rt3M"
+questionType: "MULTIPLE_CHOICE"
+title: "GIL Release in C Extensions"
+description: "What macro is used in C extensions to release the GIL during long-running operations?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "Py_BEGIN_ALLOW_THREADS / Py_END_ALLOW_THREADS"
+  - "Py_RELEASE_GIL / Py_ACQUIRE_GIL"
+  - "Py_UNLOCK / Py_LOCK"
+  - "Py_FREE_THREADS / Py_BLOCK_THREADS"
+correctAnswer: 0
+---
+
+# GIL Release in C Extensions
+
+C extensions can release the GIL using `Py_BEGIN_ALLOW_THREADS` and `Py_END_ALLOW_THREADS` macros, allowing other Python threads to run during I/O or CPU-intensive operations. This is crucial for writing performant C extensions that don't block other threads.
+\`\`\`

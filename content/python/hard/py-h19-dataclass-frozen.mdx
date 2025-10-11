@@ -1,0 +1,19 @@
+---
+id: "q_9Lm2Vn6S"
+questionType: "MULTIPLE_CHOICE"
+title: "Frozen Dataclasses"
+description: "What happens when you try to modify an attribute of a frozen dataclass?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "The value is silently ignored"
+  - "A FrozenInstanceError is raised"
+  - "The dataclass becomes unfrozen"
+  - "A warning is printed"
+correctAnswer: 1
+---
+
+# Frozen Dataclasses
+
+Setting `frozen=True` in a dataclass makes instances immutable. Attempting to modify attributes after creation raises a `FrozenInstanceError`. This is useful for creating hashable objects and ensuring data integrity.
+\`\`\`

@@ -1,0 +1,19 @@
+---
+id: "q_4Vn9Rt6S"
+questionType: "MULTIPLE_CHOICE"
+title: "Pickle Protocol Methods"
+description: "Which method is called when unpickling an object to restore its state?"
+difficulty: "HARD"
+category: "Python"
+options:
+  - "__getstate__()"
+  - "__setstate__()"
+  - "__reduce__()"
+  - "__restore__()"
+correctAnswer: 1
+---
+
+# Pickle Protocol Methods
+
+`__getstate__()` is called during pickling to get the object's state, and `__setstate__()` is called during unpickling to restore it. `__reduce__()` provides more control over the pickling process. These methods allow customization of serialization behavior.
+\`\`\`
