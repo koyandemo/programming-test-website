@@ -1,0 +1,19 @@
+---
+id: "q_1xP6xL4y"
+questionType: "MULTIPLE_CHOICE"
+title: "useCallback Dependencies"
+description: "What happens if you omit a dependency from useCallback's dependency array?"
+difficulty: "HARD"
+category: "React"
+options:
+  - "Nothing, it's optional"
+  - "The callback will use stale values from when it was created"
+  - "React will throw an error"
+  - "The callback updates automatically"
+correctAnswer: 1
+---
+
+# useCallback Dependencies
+
+Omitting dependencies from useCallback causes the callback to close over stale values, leading to bugs. The callback will continue using values from when it was first created, not current values.
+\`\`\`

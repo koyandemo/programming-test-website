@@ -1,0 +1,19 @@
+---
+id: "q_4bQ7rM1x"
+questionType: "MULTIPLE_CHOICE"
+title: "Suspense Boundaries"
+description: "What happens when a component suspends inside a Suspense boundary?"
+difficulty: "HARD"
+category: "React"
+options:
+  - "The entire app crashes"
+  - "The Suspense boundary shows its fallback UI"
+  - "The component is skipped"
+  - "An error is thrown"
+correctAnswer: 1
+---
+
+# Suspense Boundaries
+
+When a component suspends (throws a promise), React catches it at the nearest Suspense boundary and displays the fallback UI until the promise resolves, then renders the actual content.
+\`\`\`

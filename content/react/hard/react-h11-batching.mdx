@@ -1,0 +1,19 @@
+---
+id: "q_8hR4zL2x"
+questionType: "MULTIPLE_CHOICE"
+title: "Automatic Batching"
+description: "In React 18, when does automatic batching occur?"
+difficulty: "HARD"
+category: "React"
+options:
+  - "Only in event handlers"
+  - "Only in useEffect"
+  - "In all contexts including promises, setTimeout, and native event handlers"
+  - "Never automatically"
+correctAnswer: 2
+---
+
+# Automatic Batching
+
+React 18 introduced automatic batching everywhere, not just in event handlers. This means multiple state updates in promises, setTimeout, and native event handlers are batched together for better performance.
+\`\`\`

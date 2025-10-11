@@ -1,0 +1,15 @@
+---
+id: "q_7aS3yM1z"
+questionType: "TRUE_FALSE"
+title: "Context Performance"
+statement: "When a Context value changes, all components that use that Context will re-render, even if they only use a small part of the value."
+difficulty: "HARD"
+category: "React"
+correctAnswer: true
+explanation: "True. Context doesn't support partial subscriptions. When the Context value changes, all consumers re-render. To optimize, split Context into multiple contexts or use useMemo to prevent unnecessary value changes."
+---
+
+# Context Performance
+
+Understanding Context performance implications is crucial for large apps.
+\`\`\`

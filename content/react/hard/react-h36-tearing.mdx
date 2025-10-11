@@ -1,0 +1,15 @@
+---
+id: "q_1gT6yM4z"
+questionType: "TRUE_FALSE"
+title: "Tearing in Concurrent React"
+statement: "Tearing occurs when different parts of the UI show different versions of the same data during concurrent rendering."
+difficulty: "HARD"
+category: "React"
+correctAnswer: true
+explanation: "True. Tearing happens when concurrent rendering causes different components to read different values from an external store. useSyncExternalStore prevents this by ensuring consistent reads across the component tree."
+---
+
+# Tearing
+
+Understanding tearing is important for external store integration.
+\`\`\`

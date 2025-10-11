@@ -1,0 +1,19 @@
+---
+id: "q_7rT3xL1y"
+questionType: "MULTIPLE_CHOICE"
+title: "Reconciliation and Keys"
+description: "What happens when you use array indices as keys in a dynamic list?"
+difficulty: "HARD"
+category: "React"
+options:
+  - "Nothing, it works perfectly"
+  - "It can cause incorrect component state and poor performance when items are reordered"
+  - "It improves performance"
+  - "It's the recommended approach"
+correctAnswer: 1
+---
+
+# Reconciliation and Keys
+
+Using array indices as keys can cause bugs when items are reordered, added, or removed because React uses keys to match old and new elements. Stable, unique IDs should be used instead.
+\`\`\`

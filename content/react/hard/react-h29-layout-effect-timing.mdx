@@ -1,0 +1,19 @@
+---
+id: "q_8zR4xL2y"
+questionType: "MULTIPLE_CHOICE"
+title: "useLayoutEffect Timing"
+description: "When does useLayoutEffect run compared to useEffect?"
+difficulty: "HARD"
+category: "React"
+options:
+  - "After useEffect"
+  - "Before useEffect, synchronously after DOM mutations but before paint"
+  - "At the same time as useEffect"
+  - "Only on the server"
+correctAnswer: 1
+---
+
+# useLayoutEffect Timing
+
+useLayoutEffect runs synchronously after all DOM mutations but before the browser paints. This allows you to read layout and synchronously re-render before the user sees anything, preventing visual flicker.
+\`\`\`

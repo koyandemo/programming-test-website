@@ -1,0 +1,19 @@
+---
+id: "q_1fP6xJ4y"
+questionType: "MULTIPLE_CHOICE"
+title: "useInsertionEffect"
+description: "When does useInsertionEffect run compared to useLayoutEffect?"
+difficulty: "HARD"
+category: "React"
+options:
+  - "After useLayoutEffect"
+  - "Before useLayoutEffect, before DOM mutations"
+  - "At the same time as useLayoutEffect"
+  - "Only on the server"
+correctAnswer: 1
+---
+
+# useInsertionEffect
+
+useInsertionEffect fires before useLayoutEffect and before any DOM mutations. It's designed for CSS-in-JS libraries to inject styles before reading layout in useLayoutEffect.
+\`\`\`
