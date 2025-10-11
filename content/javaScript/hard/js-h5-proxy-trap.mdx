@@ -1,0 +1,19 @@
+---
+id: "q_m5n8p1q4"
+questionType: "MULTIPLE_CHOICE"
+title: "Proxy Trap Behavior"
+description: "What happens? const handler = { get: () => 42 }; const proxy = new Proxy({}, handler); proxy.anything;"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "undefined"
+  - "42"
+  - "Error"
+  - "null"
+correctAnswer: 1
+---
+
+# Proxy Trap Behavior
+
+The get trap intercepts all property access on the proxy object. Regardless of which property is accessed, the trap returns 42.
+\`\`\`

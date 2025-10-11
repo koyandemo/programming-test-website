@@ -1,0 +1,19 @@
+---
+id: "q_h7k9m2n4"
+questionType: "MULTIPLE_CHOICE"
+title: "Advanced Closure Scope"
+description: "What will be logged? function outer() { let x = 10; return function inner() { console.log(x); let x = 20; }; } outer()();"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "10"
+  - "20"
+  - "undefined"
+  - "ReferenceError"
+correctAnswer: 3
+---
+
+# Advanced Closure Scope
+
+This tests understanding of temporal dead zone and variable shadowing. The inner function declares its own `x` with `let`, creating a temporal dead zone before the declaration. Accessing `x` before its declaration throws a ReferenceError.
+\`\`\`

@@ -1,0 +1,19 @@
+---
+id: "q_d8e2f5g9"
+questionType: "MULTIPLE_CHOICE"
+title: "Tail Call Optimization"
+description: "Which function is tail-call optimizable?"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "function f(n) { return n === 0 ? 1 : n * f(n-1); }"
+  - "function f(n, acc=1) { return n === 0 ? acc : f(n-1, n*acc); }"
+  - "function f(n) { const result = f(n-1); return n * result; }"
+  - "None of the above"
+correctAnswer: 1
+---
+
+# Tail Call Optimization
+
+Option B is tail-call optimizable because the recursive call is the last operation. Options A and C perform operations after the recursive call, preventing tail-call optimization.
+\`\`\`

@@ -18,7 +18,6 @@ import {
   Shuffle,
   Zap,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useMemo } from "react";
@@ -35,6 +34,7 @@ export default function CategoryDetailPage() {
     if (!category) return [];
     return getQuestionsByCategory(category.name);
   }, [category]);
+
 
   if (!category) {
     return (
@@ -134,24 +134,12 @@ export default function CategoryDetailPage() {
           </Link>
 
           <div className="flex items-start gap-6">
-            {category.icon.includes("images") ? (
-              <div
-                className={`w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shadow-lg flex-shrink-0`}
-              >
-                <Image
-                  width={80}
-                  height={80}
-                  alt="image"
-                  src={`.${category.icon}`}
-                />
-              </div>
-            ) : (
-              <div
-                className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center text-4xl shadow-lg flex-shrink-0`}
-              >
-                {category.icon}
-              </div>
-            )}
+            {/* Category Icon */}
+            <div
+              className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center text-4xl shadow-lg flex-shrink-0`}
+            >
+              {category.icon}
+            </div>
 
             {/* Category Info */}
             <div className="flex-grow">
@@ -256,29 +244,11 @@ export default function CategoryDetailPage() {
                   className="group"
                 >
                   <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/50">
-                    {/* <div
+                    <div
                       className={`w-12 h-12 rounded-lg bg-gradient-to-br ${relatedCat.color} flex items-center justify-center text-2xl mb-3 shadow-md`}
                     >
                       {relatedCat.icon}
-                    </div> */}
-                    {relatedCat.icon.includes("images") ? (
-                      <div
-                        className={`w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shadow-lg flex-shrink-0`}
-                      >
-                        <Image
-                          width={80}
-                          height={80}
-                          alt="image"
-                          src={`.${relatedCat.icon}`}
-                        />
-                      </div>
-                    ) : (
-                      <div
-                        className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center text-4xl shadow-lg flex-shrink-0`}
-                      >
-                        {relatedCat.icon}
-                      </div>
-                    )}
+                    </div>
                     <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                       {relatedCat.name}
                     </h3>

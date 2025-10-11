@@ -1,0 +1,19 @@
+---
+id: "q_g1h4i7j2"
+questionType: "MULTIPLE_CHOICE"
+title: "Class Field Initialization"
+description: "What's the value? class C { x = this.y; y = 10; } new C().x;"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "10"
+  - "undefined"
+  - "Error"
+  - "null"
+correctAnswer: 1
+---
+
+# Class Field Initialization
+
+Class fields are initialized in order. When x is initialized, y hasn't been initialized yet, so this.y is undefined.
+\`\`\`

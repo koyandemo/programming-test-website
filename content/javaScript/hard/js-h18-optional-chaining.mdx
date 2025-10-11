@@ -1,0 +1,19 @@
+---
+id: "q_o7p2q5r8"
+questionType: "MULTIPLE_CHOICE"
+title: "Optional Chaining Edge Case"
+description: "What's returned? const obj = {a: null}; obj.a?.b?.c;"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "null"
+  - "undefined"
+  - "Error"
+  - "false"
+correctAnswer: 1
+---
+
+# Optional Chaining Edge Case
+
+Optional chaining (?.) returns undefined when encountering null or undefined. obj.a is null, so obj.a?.b returns undefined.
+\`\`\`

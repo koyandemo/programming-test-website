@@ -1,0 +1,19 @@
+---
+id: "q_p8r3t5w1"
+questionType: "MULTIPLE_CHOICE"
+title: "Prototype Chain Manipulation"
+description: "What is the result? const obj = Object.create(null); obj.toString();"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "'[object Object]'"
+  - "undefined"
+  - "TypeError"
+  - "null"
+correctAnswer: 2
+---
+
+# Prototype Chain Manipulation
+
+Objects created with `Object.create(null)` have no prototype chain, meaning they don't inherit from Object.prototype. Therefore, `toString()` method doesn't exist, resulting in a TypeError.
+\`\`\`

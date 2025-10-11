@@ -1,0 +1,19 @@
+---
+id: "q_m8n1o4p7"
+questionType: "MULTIPLE_CHOICE"
+title: "Async/Await Error Handling"
+description: "How to catch errors in: async function f() { await Promise.reject('error'); }?"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "Use .catch() on f()"
+  - "Use try/catch inside f()"
+  - "Both A and B"
+  - "Errors can't be caught"
+correctAnswer: 2
+---
+
+# Async/Await Error Handling
+
+Async function errors can be caught with try/catch inside the function or by using .catch() on the returned promise. Both methods work.
+\`\`\`

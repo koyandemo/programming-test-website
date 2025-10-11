@@ -1,0 +1,19 @@
+---
+id: "q_l4m7n2p5"
+questionType: "MULTIPLE_CHOICE"
+title: "Microtask vs Macrotask"
+description: "What executes first? setTimeout(() => console.log('A'), 0); queueMicrotask(() => console.log('B'));"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "A then B"
+  - "B then A"
+  - "Simultaneously"
+  - "Depends on browser"
+correctAnswer: 1
+---
+
+# Microtask vs Macrotask
+
+Microtasks (queueMicrotask, Promises) execute before macrotasks (setTimeout, setInterval). B logs before A.
+\`\`\`

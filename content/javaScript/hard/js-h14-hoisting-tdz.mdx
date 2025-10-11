@@ -1,0 +1,19 @@
+---
+id: "q_y4z7a3b6"
+questionType: "MULTIPLE_CHOICE"
+title: "Temporal Dead Zone"
+description: "What happens? console.log(x); let x = 5;"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "undefined"
+  - "5"
+  - "ReferenceError"
+  - "null"
+correctAnswer: 2
+---
+
+# Temporal Dead Zone
+
+Variables declared with let/const are hoisted but remain in the temporal dead zone until initialization. Accessing them before declaration throws ReferenceError.
+\`\`\`

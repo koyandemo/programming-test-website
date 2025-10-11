@@ -1,0 +1,19 @@
+---
+id: "q_q8r1s4t7"
+questionType: "MULTIPLE_CHOICE"
+title: "Object.freeze Behavior"
+description: "What happens? const obj = Object.freeze({a: {b: 1}}); obj.a.b = 2; console.log(obj.a.b);"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "1"
+  - "2"
+  - "undefined"
+  - "Error"
+correctAnswer: 1
+---
+
+# Object.freeze Behavior
+
+Object.freeze() is shallow. It freezes the top-level properties but not nested objects. obj.a.b can be modified, so it becomes 2.
+\`\`\`

@@ -1,0 +1,19 @@
+---
+id: "q_g4h7j9k2"
+questionType: "MULTIPLE_CHOICE"
+title: "Generator Function Behavior"
+description: "What does this return? function* gen() { yield 1; yield 2; return 3; } const g = gen(); [...g];"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "[1, 2, 3]"
+  - "[1, 2]"
+  - "[3]"
+  - "Error"
+correctAnswer: 1
+---
+
+# Generator Function Behavior
+
+The spread operator iterates through the generator but doesn't include the returned value (3). Only yielded values (1, 2) are included in the array.
+\`\`\`

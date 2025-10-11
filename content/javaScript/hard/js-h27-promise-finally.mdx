@@ -1,0 +1,19 @@
+---
+id: "q_y8z1a4b7"
+questionType: "MULTIPLE_CHOICE"
+title: "Promise.finally Behavior"
+description: "What does finally return? Promise.resolve(1).finally(() => 2);"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "1"
+  - "2"
+  - "undefined"
+  - "Promise"
+correctAnswer: 0
+---
+
+# Promise.finally Behavior
+
+finally() doesn't change the promise value. It returns a promise that resolves with the original value (1), not the finally callback's return value.
+\`\`\`

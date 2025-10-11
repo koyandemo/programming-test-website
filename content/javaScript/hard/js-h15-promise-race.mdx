@@ -1,0 +1,19 @@
+---
+id: "q_c9d2e5f8"
+questionType: "MULTIPLE_CHOICE"
+title: "Promise.race Behavior"
+description: "What resolves first? Promise.race([Promise.reject('A'), Promise.resolve('B')]);"
+difficulty: "HARD"
+category: "JavaScript"
+options:
+  - "Always 'B'"
+  - "Always 'A'"
+  - "Whichever settles first"
+  - "Error"
+correctAnswer: 2
+---
+
+# Promise.race Behavior
+
+Promise.race() returns a promise that settles with the first promise to settle, whether it resolves or rejects. The result depends on which promise settles first.
+\`\`\`
