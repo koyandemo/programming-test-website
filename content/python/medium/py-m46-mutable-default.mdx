@@ -1,0 +1,14 @@
+---
+id: "q_py_m46"
+questionType: "TRUE_FALSE"
+title: "Mutable Default Arguments"
+statement: "Using mutable objects like lists as default function arguments can lead to unexpected behavior."
+difficulty: "MEDIUM"
+category: "Python"
+correctAnswer: true
+explanation: "Default arguments are evaluated once when the function is defined. Mutable defaults persist across calls, causing shared state. Use None and create new objects inside the function."
+---
+
+# Mutable Default Arguments
+
+Avoid mutable defaults; use None and initialize inside the function to prevent shared state issues.
