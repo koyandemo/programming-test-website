@@ -127,10 +127,10 @@ export function TrueFalseQuestion({
             className={`px-12 py-6 text-lg cursor-pointer ${getButtonStyle(true)}`}
           >
             <div className="flex items-center gap-3">
-              {(showResult || hasAnswered) && question.correctAnswer === true && <CheckCircle className="w-5 h-5" />}
+              {(showResult || hasAnswered) && question.correctAnswer === true && <CheckCircle className="w-5 h-5 text-green-500" />}
               {(showResult || hasAnswered) &&
                 (selectedAnswer === true || selected === true) &&
-                question.correctAnswer !== true && <XCircle className="w-5 h-5" />}
+                question.correctAnswer !== true && <XCircle className="w-5 h-5 text-red-500" />}
               True
             </div>
           </Button>
@@ -143,10 +143,10 @@ export function TrueFalseQuestion({
             className={`px-12 py-6 text-lg cursor-pointer ${getButtonStyle(false)}`}
           >
             <div className="flex items-center gap-3">
-              {(showResult || hasAnswered) && question.correctAnswer === false && <CheckCircle className="w-5 h-5" />}
+              {(showResult || hasAnswered) && question.correctAnswer === false && <CheckCircle className="w-5 h-5 text-green-500" />}
               {(showResult || hasAnswered) &&
                 (selectedAnswer === false || selected === false) &&
-                question.correctAnswer !== false && <XCircle className="w-5 h-5" />}
+                question.correctAnswer !== false && <XCircle className="w-5 h-5 text-red-500" />}
               False
             </div>
           </Button>

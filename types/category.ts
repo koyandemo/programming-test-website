@@ -5,4 +5,5 @@ export type CategoryT = {
   icon: string
   color: string
   description: string
+  questionCount: number
 }

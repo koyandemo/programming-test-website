@@ -1,5 +1,6 @@
 "use client";
 
+import CategoryCard from "@/components/shared/CategoryCard";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -34,7 +35,6 @@ export default function CategoryDetailPage() {
     if (!category) return [];
     return getQuestionsByCategory(category.name);
   }, [category]);
-
 
   if (!category) {
     return (
@@ -238,29 +238,7 @@ export default function CategoryDetailPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedCategories.map((relatedCat) => (
-                <Link
-                  key={relatedCat.id}
-                  href={`/categories/${relatedCat.slug}`}
-                  className="group"
-                >
-                  <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/50">
-                    <div
-                      className={`w-12 h-12 rounded-lg bg-gradient-to-br ${relatedCat.color} flex items-center justify-center text-2xl mb-3 shadow-md`}
-                    >
-                      {relatedCat.icon}
-                    </div>
-                    <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                      {relatedCat.name}
-                    </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
-                      {relatedCat.description}
-                    </p>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-3">
-                      <BookOpen className="w-3 h-3" />
-                      <span>{relatedCat.questionCount} questions</span>
-                    </div>
-                  </Card>
-                </Link>
+                <CategoryCard key={relatedCat.id} category={relatedCat} />
               ))}
             </div>
           </div>

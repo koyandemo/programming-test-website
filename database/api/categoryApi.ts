@@ -17,6 +17,7 @@ export const CATEGORIES_DATA: CategoryT[] = allCategories.map((cat) => ({
   description: cat.description,
   icon: cat.icon,
   color: cat.color,
+  questionCount: 0, 
 }))
 
 export function getCategoriesWithStats(): CategoryT[] {

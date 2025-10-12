@@ -5,5 +5,5 @@ export interface CategoryT {
   description: string;
   icon: string;
   color: string; // for card styling
-  questionCount?: number;
+  questionCount: number;
 }
