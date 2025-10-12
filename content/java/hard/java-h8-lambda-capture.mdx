@@ -9,7 +9,3 @@ correctAnswer: false
 explanation: "Lambda expressions can only capture effectively final variables (variables that are not modified after initialization). This restriction exists because lambdas may be executed in different threads or at different times."
 ---
 
-# Lambda Variable Capture
-
-Lambdas can capture local variables, but they must be effectively final. This means the variable cannot be reassigned after the lambda is created. Instance variables and static variables can be modified because they're accessed by reference.
-\`\`\`

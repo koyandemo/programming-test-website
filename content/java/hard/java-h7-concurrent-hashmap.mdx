@@ -13,7 +13,3 @@ options:
 correctAnswer: 1
 ---
 
-# ConcurrentHashMap Internals
-
-Java 7 used segment-level locking (16 segments by default). Java 8+ uses CAS (Compare-And-Swap) operations and synchronized blocks on individual nodes, allowing much higher concurrency. This fine-grained locking strategy enables multiple threads to read/write different parts simultaneously.
-\`\`\`

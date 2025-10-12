@@ -12,8 +12,3 @@ options:
   - "Synchronized access to the variable"
 correctAnswer: 1
 ---
-
-# Volatile Keyword
-
-The volatile keyword guarantees visibility of changes across threads by preventing caching of the variable in thread-local memory. However, it does NOT provide atomicity for compound operations like increment (i++). For atomic operations, use AtomicInteger or synchronized blocks.
-\`\`\`

@@ -9,7 +9,3 @@ correctAnswer: true
 explanation: "The parent delegation model is a core principle where ClassLoaders first delegate to their parent before attempting to load a class themselves. This ensures core Java classes are loaded by the bootstrap ClassLoader and prevents class spoofing."
 ---
 
-# ClassLoader Delegation
-
-The parent delegation model ensures that classes are loaded in a hierarchical manner: Bootstrap ClassLoader → Extension ClassLoader → Application ClassLoader. This prevents malicious code from replacing core Java classes.
-\`\`\`
