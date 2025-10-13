@@ -1,0 +1,10 @@
+---
+id: "q_jvh20f0g0h"
+questionType: "TRUE_FALSE"
+title: "Array Covariance"
+statement: "Java arrays are covariant, meaning if Dog extends Animal, then Dog[] is considered a subtype of Animal[], which can lead to a ArrayStoreException at runtime."
+difficulty: "HARD"
+category: "Java"
+correctAnswer: true
+explanation: "Java arrays are indeed covariant for backward compatibility, unlike generics. This design decision allows for runtime errors like ArrayStoreException if you try to insert an incompatible element into a supertype array that originally held a subtype."
+---

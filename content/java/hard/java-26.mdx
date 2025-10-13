@@ -1,0 +1,10 @@
+---
+id: "q_jvh16t6u6v"
+questionType: "TRUE_FALSE"
+title: "Reflection Security"
+statement: "It is possible for code using Java Reflection to access and modify the value of a private final instance field of a class, even if it is not in the same package."
+difficulty: "HARD"
+category: "Java"
+correctAnswer: true
+explanation: "Reflection, by calling setAccessible(true) on a Field object, can bypass Java's access control mechanisms to read or modify private and final fields (though the latter may be complex/unreliable depending on the JVM optimization)."
+---

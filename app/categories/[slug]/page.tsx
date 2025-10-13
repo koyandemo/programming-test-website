@@ -121,9 +121,9 @@ export default function CategoryDetailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background container m-auto">
       {/* Header */}
-      <div className="border-b border-border bg-card/50">
+      <div className="border-b border-border ">
         <div className="container mx-auto px-4 py-8">
           <Link
             href="/categories"

@@ -1,0 +1,10 @@
+---
+id: "q_jvh18z8a8b"
+questionType: "TRUE_FALSE"
+title: "Anonymous Inner Classes and Variables"
+statement: "An anonymous inner class defined within a method can access and modify any local variable of the enclosing method, provided the variable is declared as volatile."
+difficulty: "HARD"
+category: "Java"
+correctAnswer: false
+explanation: "Inner classes (including anonymous ones) can only access local variables of the enclosing scope if they are effectively final (either explicitly declared final or their value is never changed after initialization), regardless of the volatile keyword."
+---

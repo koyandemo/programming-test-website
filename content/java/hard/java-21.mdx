@@ -1,0 +1,10 @@
+---
+id: "q_jvh11e1f1g"
+questionType: "TRUE_FALSE"
+title: "Synchronization and Atomicity"
+statement: "While the volatile keyword guarantees visibility, an operation like i++ on a volatile integer variable is guaranteed to be atomic and thread-safe without further synchronization."
+difficulty: "HARD"
+category: "Java"
+correctAnswer: false
+explanation: "The i++ operation is not atomic; it involves three separate steps (read, increment, write). The volatile keyword only guarantees visibility of the write operation, not the atomicity of the compound operation."
+---
