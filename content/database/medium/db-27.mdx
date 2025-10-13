@@ -1,0 +1,10 @@
+---
+id: "db_tf_007"
+questionType: "TRUE_FALSE"
+title: "Hash Join Optimality"
+statement: "A Hash Join is typically the most efficient join algorithm for large relations when the smaller of the two relations is guaranteed to fit entirely in main memory."
+difficulty: "HARD"
+category: "Database"
+correctAnswer: true
+explanation: "By building a hash table of the smaller relation in memory, a hash join can often perform the join in $O(N)$ average time complexity, which is generally faster than Sort-Merge Join or Nested-Loop Join for this scenario."
+---

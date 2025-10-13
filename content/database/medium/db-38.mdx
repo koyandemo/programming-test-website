@@ -1,0 +1,10 @@
+---
+id: "db_tf_018"
+questionType: "TRUE_FALSE"
+title: "Phantom Reads in Repeatable Read"
+statement: "The SQL isolation level `REPEATABLE READ` is sufficient to prevent the transaction anomaly known as a phantom read."
+difficulty: "HARD"
+category: "Database"
+correctAnswer: false
+explanation: "`REPEATABLE READ` prevents non-repeatable reads by locking existing rows, but it generally does not prevent phantom reads, which are new rows inserted by another transaction that match a query's criteria."
+---

@@ -1,0 +1,10 @@
+---
+id: "db_tf_002"
+questionType: "TRUE_FALSE"
+title: "Two-Phase Locking (2PL) Recoverability"
+statement: "Any schedule produced by a concurrency control system using standard Two-Phase Locking (2PL) is guaranteed to be free from cascading aborts."
+difficulty: "HARD"
+category: "Database"
+correctAnswer: false
+explanation: "Standard 2PL prevents non-serializable schedules, but only Strict 2PL (where exclusive locks are held until commit) prevents cascading aborts."
+---

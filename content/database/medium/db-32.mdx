@@ -1,0 +1,10 @@
+---
+id: "db_tf_012"
+questionType: "TRUE_FALSE"
+title: "Lock Granularity vs. Concurrency"
+statement: "Increasing the lock granularity (e.g., from row-level to table-level locking) generally leads to increased transaction concurrency but also higher resource overhead."
+difficulty: "HARD"
+category: "Database"
+correctAnswer: false
+explanation: "Increasing lock granularity **decreases** concurrency, as a lock on a large object (like a table) blocks more transactions than a lock on a small object (like a row)."
+---

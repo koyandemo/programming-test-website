@@ -1,0 +1,10 @@
+---
+id: "db_tf_020"
+questionType: "TRUE_FALSE"
+title: "Database Buffering Write Strategy"
+statement: "The Write-Ahead Logging (WAL) protocol allows the database system to write modified data pages from the buffer to disk before the corresponding log records are written to stable storage."
+difficulty: "HARD"
+category: "Database"
+correctAnswer: false
+explanation: "WAL protocol dictates that the log record must be written to stable storage **before** the corresponding data page is written to disk (the 'write-ahead' principle), ensuring recoverability."
+---

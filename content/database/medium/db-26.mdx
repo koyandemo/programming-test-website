@@ -1,0 +1,10 @@
+---
+id: "db_tf_006"
+questionType: "TRUE_FALSE"
+title: "Two-Phase Commit (2PC) Reliability"
+statement: "The Two-Phase Commit (2PC) protocol can be indefinitely blocked if the coordinator fails after sending the 'VOTE_COMMIT' message but before receiving all 'ACK' responses."
+difficulty: "HARD"
+category: "Database"
+correctAnswer: true
+explanation: "If the coordinator fails permanently during the commit phase, remaining participants cannot resolve the transaction's status and will remain blocked until the coordinator recovers."
+---

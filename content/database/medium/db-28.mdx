@@ -1,0 +1,10 @@
+---
+id: "db_tf_008"
+questionType: "TRUE_FALSE"
+title: "CAP Theorem and Partition Tolerance"
+statement: "According to the CAP theorem, an RDBMS that maintains strict ACID Compliance must sacrifice Partition Tolerance in favor of Consistency and Availability."
+difficulty: "HARD"
+category: "Database"
+correctAnswer: false
+explanation: "ACID implies strong Consistency (C). In a network partition (P), the system must choose between Consistency and Availability (A). Strict RDBMS often sacrifices Availability (A) during a partition to maintain Consistency (C)."
+---
