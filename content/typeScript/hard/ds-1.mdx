@@ -1,0 +1,14 @@
+---
+id: "q_ts_hard_001"
+questionType: "MULTIPLE_CHOICE"
+title: "Mapped Types"
+description: "Which syntax defines a mapped type that makes all properties optional?"
+difficulty: "HARD"
+category: "Type Script"
+options:
+  - "type Optional<T> = { [P in keyof T]: T[P] };"
+  - "type Optional<T> = { [P in keyof T]?: T[P] };"
+  - "type Optional<T> = Partial<T[P]>;"
+  - "type Optional<T> = keyof T ? T[P] : never;"
+correctAnswer: 1
+---
