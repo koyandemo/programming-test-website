@@ -5,15 +5,17 @@ import { getCategoriesWithStats } from "@/database/api/categoryApi";
 import { BookOpen, Sparkles, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import CategoryCard from "@/components/shared/CategoryCard";
+import BackgroundContainter from "@/components/shared/BackgroundContainter";
+
 
 export default function HomePage() {
   const categories = getCategoriesWithStats();
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
+    <div className="relative min-h-screen  overflow-hidden">
+     
       <section className="relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
+        {/* <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" /> */}
         <div className="container relative mx-auto px-4 pt-10 pb-24">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
@@ -27,7 +29,7 @@ export default function HomePage() {
             <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
               Take comprehensive programming assessments across multiple
               languages and topics. Get instant feedback, detailed explanations,
-              and track your progress - all without creating an account.
+              and track your progress — all without creating an account.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/categories">
@@ -41,9 +43,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-card/30">
-        {/* //max-w-6xl */}
-        <div className="container mx-auto ">
+      {/* Categories Section */}
+      <section className="py-20 px-4 bg-card/30 relative z-10">
+        <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Explore Our Categories

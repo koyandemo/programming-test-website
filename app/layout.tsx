@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
 import ClientLayout from "@/components/layout/ClientLayout"
+import BackgroundContainter from "@/components/shared/BackgroundContainter"
 
 export const metadata: Metadata = {
   title: "CodeTest Pro - Programming Interview Platform",
