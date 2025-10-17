@@ -47,7 +47,7 @@ export default function ClientLayout({
         </div>
       )}
       <BackgroundContainter />
-      <div className={shouldHideHeader ? "pt-14" : "pt-20"}>{children}</div>
+      <div className={`${shouldHideHeader ? "pt-14" : "pt-20"} z-30`}>{children}</div>
     </>
   );
 }

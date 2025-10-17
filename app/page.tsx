@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <div className="relative min-h-screen  overflow-hidden">
      
-      <section className="relative overflow-hidden border-b border-border">
+      <section className="relative overflow-hidden ">
         {/* <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" /> */}
         <div className="container relative mx-auto px-4 pt-10 pb-24">
           <div className="max-w-4xl mx-auto text-center">
@@ -44,7 +44,7 @@ export default function HomePage() {
       </section>
 
       {/* Categories Section */}
-      <section className="py-20 px-4 bg-card/30 relative z-10">
+      <section className="py-20 px-4 relative z-10">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">

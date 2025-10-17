@@ -61,7 +61,8 @@ const CountDownDialog = ({
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    //bg-background
+    <div className="min-h-screen">
       <Dialog
         open={open}
         onOpenChange={() => {

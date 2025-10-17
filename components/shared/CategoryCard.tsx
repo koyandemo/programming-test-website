@@ -15,7 +15,7 @@ const CategoryCard = ({ category }: Props) => {
       href={`/categories/${category.slug}`}
       className="group"
     >
-      <Card className="h-full p-6 hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/50">
+      <Card className="h-full p-6 hover:shadow-lg  transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/50">
         <div className="flex flex-col h-full">
           {/* Icon with gradient background */}
           <div className="mb-4">
