@@ -5,7 +5,7 @@ import { Badge } from "../ui/badge";
 
 const Header = () => {
   return (
-    <header className="border-b border-border bg-card/50 backdrop-blur-sm fixed top-0 w-full">
+    <header className="fixed top-0 w-full">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
